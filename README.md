@@ -15,6 +15,14 @@ Then run the app by typing:
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+## How to add new features / fixes
+
+Before creating a new components or fixing a bug please pull the latest changes from the master branch
+
+Then create a new branch called either `feat/MyComponent` or `fix/My-bugfix-for-MyComponent` for new features or bugfixes respectively.
+
+ALWAYS create a pull request before merging your branch with main!
+
 ## Project Structure
 
 The project inside the **src** folder is structured into multiple folders
