@@ -5,7 +5,7 @@ Angry Clicker is definetly not inspired by or is a clone of Cookie Clicker!
 
 ## How to get started
 After pulling the project from git type the following command in the terminal in the console to download all dependencies:
-    yarn
+```yarn```
 
 ## Available Scripts
 
