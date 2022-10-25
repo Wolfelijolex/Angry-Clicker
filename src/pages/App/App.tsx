@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../../assets/angryScaled.png";
 import "../../styles/pages/App.css";
+import MyComponent from "../../components/MyComponent/MyComponent";
 
 function App() {
   return (
@@ -16,6 +17,10 @@ function App() {
         >
           Join the angry!
         </a>
+        <MyComponent
+          title="Title of MyComponent"
+          text="Text of MyComponent"
+        ></MyComponent>
       </header>
     </div>
   );
