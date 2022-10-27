@@ -1,4 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { AutoClickerId } from "./autoClickers";
+import { UpgradeId } from "./upgrades";
 
 // ----------------- Money -----------------
 export const moneySlice = createSlice({
@@ -11,7 +13,7 @@ export const moneySlice = createSlice({
 });
 
 // ----------------- Upgrades -----------------
-const initialUpgrades = {
+const initialUpgrades: { [key in UpgradeId]: number } = {
   clickMultiplier: 1,
 };
 
@@ -29,8 +31,36 @@ export const upgradesSlice = createSlice({
 });
 
 export type UpgradeUpdate = {
-  id: keyof typeof initialUpgrades;
+  id: UpgradeId;
   amount: number;
 };
 
 // ----------------- Autoclickes -----------------
+const initialAutoClickers: { [key in AutoClickerId]: number } = {
+  angryBird: 0,
+  angryFarm: 0,
+};
+
+export const autoClickersSlice = createSlice({
+  name: "autoClickers",
+  initialState: initialAutoClickers,
+  reducers: {
+    add: (state, action: PayloadAction<AutoClickerUpdate>) => {
+      return {
+        ...state,
+        [action.payload.id]: state[action.payload.id] + action.payload.amount,
+      };
+    },
+    remove: (state, action: PayloadAction<AutoClickerUpdate>) => {
+      return {
+        ...state,
+        [action.payload.id]: state[action.payload.id] - action.payload.amount,
+      };
+    },
+  },
+});
+
+export type AutoClickerUpdate = {
+  id: AutoClickerId;
+  amount: number;
+};
