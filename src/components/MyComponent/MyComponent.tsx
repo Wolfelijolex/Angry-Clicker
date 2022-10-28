@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
 
 type MyComponentProps = {
   title: string;
@@ -6,10 +8,13 @@ type MyComponentProps = {
 };
 
 function MyComponent(props: MyComponentProps) {
+  const money = useSelector((state: RootState) => state.money);
+
   return (
     <div>
       <h1>{props.title}</h1>
       <p>{props.text}</p>
+      <p>{money} money :D</p>
     </div>
   );
 }
