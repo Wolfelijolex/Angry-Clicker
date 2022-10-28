@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { AutoClickerId } from "app/autoClickers";
 import { UpgradeId, upgrades } from "app/upgrades";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,6 +9,7 @@ type SingleItemProps = {
   id: UpgradeId | AutoClickerId;
   name: string;
   price: number;
+  amount: number;
 };
 
 const isUpgrade = (id: UpgradeId | AutoClickerId): id is UpgradeId => {
@@ -16,8 +17,8 @@ const isUpgrade = (id: UpgradeId | AutoClickerId): id is UpgradeId => {
 };
 
 export const SingleItem = (props: SingleItemProps) => {
-  const { id, name, price } = props;
-  const [amount, setAmount] = useState(1);
+  const { id, name, price, amount } = props;
+
   const money = useSelector((state: RootState) => state.money);
   const dispatch = useDispatch();
 
@@ -30,14 +31,10 @@ export const SingleItem = (props: SingleItemProps) => {
     }
   };
 
-  const hasEnoughMoney = (): boolean => {
-    return money >= price;
-  };
-
   return (
     <div>
-      <button type="button" disabled={!hasEnoughMoney()} onClick={() => buyItem()}>
-        {name}: {price}$
+      <button type="button" disabled={money < price} onClick={() => buyItem()}>
+        {name}: €{price}
       </button>
     </div>
   );
