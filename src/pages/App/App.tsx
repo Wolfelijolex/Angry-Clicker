@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../assets/angryScaled.png";
-import "../../styles/pages/App.css";
+import "../../styles/pages/App.scss";
 import MyComponent from "../../components/MyComponent/MyComponent";
 
 function App() {
