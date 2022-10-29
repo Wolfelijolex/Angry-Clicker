@@ -5,7 +5,7 @@ import MyComponent from "../../components/MyComponent/MyComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import { moneySlice } from "../../app/slicers";
-
+import StockMarket from "../../components/StockMarket/StockMarket";
 function App() {
   const money = useSelector((state: RootState) => state.money);
   const dispatch = useDispatch();
@@ -23,6 +23,7 @@ function App() {
           Click me to get Money! you have {money} coins
         </button>
       </header>
+      <StockMarket title="StockMarket" text="gaming"></StockMarket>
     </div>
   );
 }
