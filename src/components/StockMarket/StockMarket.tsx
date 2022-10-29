@@ -7,13 +7,20 @@ type StockMarketProps = {
 
 function StockMarket(props: StockMarketProps) {
   const [stockPrice, setStockPrice] = useState(0);
+  //const [stockClasses, setStockClasses] = useState([0, 0, 0]);
 
+  //USE REF TO FIX ISSUES
   useEffect(() => {
     const interval = setInterval(() => {
-      setStockPrice(Math.floor(Math.random() * 100));
+      handlePriceIncrease();
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+
+  const handlePriceIncrease = () => {
+    setStockPrice(Math.floor(Math.random() * 100));
+    console.log(stockPrice);
+  };
 
   return (
     <section>
@@ -21,8 +28,6 @@ function StockMarket(props: StockMarketProps) {
       {/* Stockmarket animation */}
       <div>
         <div>
-          <p></p>
-          <p></p>
           <p></p>
         </div>
         <div>
