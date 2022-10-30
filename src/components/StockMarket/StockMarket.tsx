@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 type StockMarketProps = {
   title: string;
@@ -7,19 +7,30 @@ type StockMarketProps = {
 
 function StockMarket(props: StockMarketProps) {
   const [stockPrice, setStockPrice] = useState(0);
-  //const [stockClasses, setStockClasses] = useState([0, 0, 0]);
+  const [stockClasses, setStockClasses] = useState([0, 0, 0, 0]);
+  const stockClassesRef = useRef(stockClasses);
+  stockClassesRef.current = stockClasses;
+  const priceRef = useRef(stockPrice);
+  priceRef.current = stockPrice;
 
-  //USE REF TO FIX ISSUES
   useEffect(() => {
     const interval = setInterval(() => {
-      handlePriceIncrease();
+      priceRef.current = Math.floor(Math.random() * 100);
+      setStockPrice(priceRef.current);
+      handleClassChange();
     }, 1000);
     return () => clearInterval(interval);
   }, []);
 
-  const handlePriceIncrease = () => {
-    setStockPrice(Math.floor(Math.random() * 100));
-    console.log(stockPrice);
+  const handleClassChange = () => {
+    for (let i = 0; i < stockClassesRef.current.length; i++) {
+      if (i == stockClassesRef.current.length - 1) {
+        stockClassesRef.current[i] = priceRef.current;
+      } else {
+        stockClassesRef.current[i] = stockClassesRef.current[i + 1];
+      }
+    }
+    setStockClasses(stockClassesRef.current);
   };
 
   return (
@@ -28,7 +39,11 @@ function StockMarket(props: StockMarketProps) {
       {/* Stockmarket animation */}
       <div>
         <div>
-          <p></p>
+          {stockClasses.map((stockClass, index) => (
+            <div key={index} className={`stock ${stockClass}`}>
+              {stockClass}
+            </div>
+          ))}
         </div>
         <div>
           <p>{stockPrice}</p>
