@@ -3,9 +3,10 @@ import { upgrades } from "app/upgrades";
 import { RootState } from "app/store";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { SingleItem } from "./SingleItem/SingleItem";
+import SingleItem from "./SingleItem/SingleItem";
+import styles from "styles/components/Store.module.scss";
 
-export const ShopComponent = () => {
+function ShopComponent() {
   const appState = useSelector((state: RootState) => state);
   const [buyAmount, setBuyAmount] = useState(1);
 
@@ -14,19 +15,24 @@ export const ShopComponent = () => {
   };
 
   return (
-    <div>
-      <div>
-        <button type="button" disabled={buyAmount === 1} onClick={() => setBuyAmount(1)}>
-          1x
-        </button>
-        <button type="button" disabled={buyAmount === 10} onClick={() => setBuyAmount(10)}>
-          10x
-        </button>
-        <button type="button" disabled={buyAmount === 100} onClick={() => setBuyAmount(100)}>
-          100x
-        </button>
+    <div className="mx-6">
+      <div className="w-100 text-center mb-3 text-2xl font-bold">Angry Shop</div>
+      <div className="flex justify-around">
+        {[1, 10, 100].map((value) => {
+          return (
+            <button
+              className={styles.AmountSelectionButton}
+              type="button"
+              disabled={buyAmount === value}
+              onClick={() => setBuyAmount(value)}
+              key={`buy-${value}`}
+            >
+              {value}x
+            </button>
+          );
+        })}
       </div>
-      <div>Upgrade Shop</div>
+      <div className="w-100 text-center mt-4 mb-2 text-xl">Upgrade Shop</div>
       {upgrades.map((upgrade) => {
         return (
           <SingleItem
@@ -34,11 +40,12 @@ export const ShopComponent = () => {
             name={upgrade.name}
             price={calculatePrice(upgrade.basePrice, appState.upgrades[upgrade.id])}
             amount={buyAmount}
+            owned={appState.upgrades[upgrade.id]}
             key={upgrade.id}
           />
         );
       })}
-      <div>Autoclicker Shop (wip)</div>
+      <div className="w-100 text-center mt-4 mb-2 text-xl">Autoclicker Shop</div>
       {autoClickers.map((clicker) => {
         return (
           <SingleItem
@@ -46,10 +53,13 @@ export const ShopComponent = () => {
             name={clicker.name}
             price={calculatePrice(clicker.basePrice, appState.autoClickers[clicker.id])}
             amount={buyAmount}
+            owned={appState.autoClickers[clicker.id]}
             key={clicker.id}
           />
         );
       })}
     </div>
   );
-};
+}
+
+export default ShopComponent;
