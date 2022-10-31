@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Xarrow, { useXarrow, Xwrapper } from "react-xarrows";
+import styles from "../../styles/components/StockMarket.module.scss";
 
 type StockMarketProps = {
   title: string;
@@ -41,10 +42,10 @@ function StockMarket(props: StockMarketProps) {
   };
 
   return (
-    <section>
-      <h2>{props.title}</h2>
+    <section className={styles.StockMarket}>
+      <h2 className={styles.StockMarket__title}>{props.title}</h2>
       {/* Stockmarket animation */}
-      <div>
+      <div className={styles.StockMarket__graph}>
         <div className="flex justify-around">
           <Xwrapper>
             {stockClasses.map((stockClass, index) => (
@@ -61,9 +62,9 @@ function StockMarket(props: StockMarketProps) {
         </div>
       </div>
       {/* Stockmarket interface */}
-      <div>
+      <div className={styles.StockMarket__interface}>
         {/* Stockmarket amount flex */}
-        <div className="flex justify-around">
+        <div className={`flex justify-around ${styles.StockMarket__interface__amount}`}>
           {[1, 10, 100].map((value) => {
             return (
               <button
@@ -79,7 +80,7 @@ function StockMarket(props: StockMarketProps) {
           })}
         </div>
         {/* Stockmarket button flex */}
-        <div>
+        <div className={`flex justify-around ${styles.StockMarket__interface__buttons}`}>
           <button>BUY</button>
           <button>SELL</button>
         </div>
