@@ -50,7 +50,6 @@ function StockMarket(props: StockMarketProps) {
             {stockClasses.map((stockClass, index) => (
               <div key={`stock-${index}`} id={`stock-${index}`} className={`stock ${stockClass}`}></div>
             ))}
-
             <Xarrow key={`xarrow-${0}`} showHead={false} start={`stock-${0}`} end={`stock-${1}`} />
             <Xarrow key={`xarrow-${1}`} showHead={false} start={`stock-${1}`} end={`stock-${2}`} />
             <Xarrow key={`xarrow-${2}`} showHead={false} start={`stock-${2}`} end={`stock-${3}`} />
