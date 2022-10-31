@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import Xarrow, { useXarrow, Xwrapper } from "react-xarrows";
 
 type StockMarketProps = {
   title: string;
@@ -6,18 +7,24 @@ type StockMarketProps = {
 };
 
 function StockMarket(props: StockMarketProps) {
+  //STATES
   const [stockPrice, setStockPrice] = useState(0);
   const [stockClasses, setStockClasses] = useState([0, 0, 0, 0]);
+  const [buyAmount, setBuyAmount] = useState(0);
+  //REFS
   const stockClassesRef = useRef(stockClasses);
-  stockClassesRef.current = stockClasses;
   const priceRef = useRef(stockPrice);
+  stockClassesRef.current = stockClasses;
   priceRef.current = stockPrice;
+  //XARROW
+  const updateXarrow = useXarrow();
 
   useEffect(() => {
     const interval = setInterval(() => {
       priceRef.current = Math.floor(Math.random() * 100);
       setStockPrice(priceRef.current);
       handleClassChange();
+      updateXarrow();
     }, 1000);
     return () => clearInterval(interval);
   }, []);
@@ -38,12 +45,16 @@ function StockMarket(props: StockMarketProps) {
       <h2>{props.title}</h2>
       {/* Stockmarket animation */}
       <div>
-        <div>
-          {stockClasses.map((stockClass, index) => (
-            <div key={index} className={`stock ${stockClass}`}>
-              {stockClass}
-            </div>
-          ))}
+        <div className="flex justify-around">
+          <Xwrapper>
+            {stockClasses.map((stockClass, index) => (
+              <div key={`stock-${index}`} id={`stock-${index}`} className={`stock ${stockClass}`}></div>
+            ))}
+
+            <Xarrow key={`xarrow-${0}`} showHead={false} start={`stock-${0}`} end={`stock-${1}`} />
+            <Xarrow key={`xarrow-${1}`} showHead={false} start={`stock-${1}`} end={`stock-${2}`} />
+            <Xarrow key={`xarrow-${2}`} showHead={false} start={`stock-${2}`} end={`stock-${3}`} />
+          </Xwrapper>
         </div>
         <div>
           <p>{stockPrice}</p>
@@ -53,11 +64,20 @@ function StockMarket(props: StockMarketProps) {
       {/* Stockmarket interface */}
       <div>
         {/* Stockmarket amount flex */}
-        <div>
-          <p>1</p>
-          <p>10</p>
-          <p>100</p>
-          <p>all</p>
+        <div className="flex justify-around">
+          {[1, 10, 100].map((value) => {
+            return (
+              <button
+                className={""}
+                type="button"
+                disabled={buyAmount === value}
+                onClick={() => setBuyAmount(value)}
+                key={`buy-${value}`}
+              >
+                {value}x
+              </button>
+            );
+          })}
         </div>
         {/* Stockmarket button flex */}
         <div>
