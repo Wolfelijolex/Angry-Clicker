@@ -11,19 +11,32 @@ function App() {
   const dispatch = useDispatch();
 
   return (
-    <div className={styles.App}>
-      <header className={styles.App_header}>
-        <img src={logo} className={styles.App_logo} alt="logo" />
-        <p className="text-3xl font-bold">Become angry</p>
-        <a className={styles.App_link} href="https://discord.gg/2hzaK9zPxx" target="_blank" rel="noopener noreferrer">
-          Join the angry!
-        </a>
-        <MyComponent title="Title of MyComponent" text="Text of MyComponent"></MyComponent>
-        <button className="text-amber-400 font-sans" onClick={() => dispatch(moneySlice.actions.add(1))}>
-          Click me to get Money! you have {money} coins
-        </button>
-      </header>
-      <StockMarket title="StockMarket" text="gaming"></StockMarket>
+    <div className="grid grid-cols-3">
+
+      {/* LEFT COLUMN */}
+      <div>
+      </div>
+
+      {/* MIDDLE COLUMN */}
+      <div>
+        <div className={styles.App}>
+          <header className={styles.App_header}>
+            <img src={logo} className={styles.App_logo} alt="logo" />
+            <p className="text-3xl font-bold">Become angry</p>
+            <a className={styles.App_link} href="https://discord.gg/2hzaK9zPxx" target="_blank" rel="noopener noreferrer">
+              Join the angry!
+            </a>
+            <MyComponent title="Title of MyComponent" text="Text of MyComponent"></MyComponent>
+            <button className="text-amber-400 font-sans" onClick={() => dispatch(moneySlice.actions.add(1))}>
+              Click me to get Money! you have {money} coins
+            </button>
+          </header>
+        </div>
+      </div>
+
+      {/* RIGHT COLUMN */}
+      <div>
+      </div>
     </div>
   );
 }
