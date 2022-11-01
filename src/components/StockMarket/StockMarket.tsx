@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-//import Xarrow, { useXarrow, Xwrapper } from "react-xarrows";
 import styles from "../../styles/components/StockMarket.module.scss";
 import "../../styles/components/Stock.scss";
 import source from "../../assets/angryScaled.png";
@@ -67,8 +66,7 @@ function StockMarket(props: StockMarketProps) {
     if (coins >= buyAmount) {
       dispatch(moneySlice.actions.add(stockPrice * buyAmount));
       dispatch(angryCoinSlice.actions.subtract(buyAmount));
-    }
-    else if(coins < buyAmount){
+    } else if (coins < buyAmount) {
       dispatch(moneySlice.actions.add(stockPrice * coins));
       dispatch(angryCoinSlice.actions.subtract(coins));
     }
@@ -115,8 +113,20 @@ function StockMarket(props: StockMarketProps) {
         </div>
         {/* Stockmarket button flex */}
         <div className={`${styles.StockMarket__buttons}`}>
-          <button disabled={buyAmount*stockPrice > money || buyAmount == 0} className={`${styles.StockMarket__buttons__buy}`} onClick={handleCoinBuy}>BUY</button>
-          <button disabled={coins == 0 || buyAmount == 0} className={`${styles.StockMarket__buttons__sell}`} onClick={handleCoinSell}>SELL</button>
+          <button
+            disabled={buyAmount * stockPrice > money || buyAmount == 0}
+            className={`${styles.StockMarket__buttons__buy}`}
+            onClick={handleCoinBuy}
+          >
+            BUY
+          </button>
+          <button
+            disabled={coins == 0 || buyAmount == 0}
+            className={`${styles.StockMarket__buttons__sell}`}
+            onClick={handleCoinSell}
+          >
+            SELL
+          </button>
         </div>
       </div>
     </section>
