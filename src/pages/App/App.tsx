@@ -14,7 +14,7 @@ function App() {
     <div className="grid grid-cols-3">
       {/* LEFT COLUMN */}
       <div className="grid grid-rows-3 bg-red-300 gap-3">
-        <StockMarket  title="Stockmarket" text="Gamings"></StockMarket>
+        <StockMarket  title="ANGRY Coin"></StockMarket>
         <div>Casino</div>
         <div>Tarot</div>
       </div>

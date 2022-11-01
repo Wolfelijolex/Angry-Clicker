@@ -9,7 +9,6 @@ import { moneySlice, angryCoinSlice } from "../../app/slicers";
 
 type StockMarketProps = {
   title: string;
-  text: string;
   className?: string;
 };
 
