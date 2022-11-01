@@ -12,10 +12,9 @@ function App() {
 
   return (
     <div className="grid grid-cols-3">
-
       {/* LEFT COLUMN */}
-      <div className="grid grid-rows-3">
-        <StockMarket title="Stockmarket" text="Gamings"></StockMarket>
+      <div className="grid grid-rows-3 bg-red-300 gap-3">
+        <StockMarket  title="Stockmarket" text="Gamings"></StockMarket>
         <div>Casino</div>
         <div>Tarot</div>
       </div>
@@ -26,7 +25,12 @@ function App() {
           <header className={styles.App_header}>
             <img src={logo} className={styles.App_logo} alt="logo" />
             <p className="text-3xl font-bold">Become angry</p>
-            <a className={styles.App_link} href="https://discord.gg/2hzaK9zPxx" target="_blank" rel="noopener noreferrer">
+            <a
+              className={styles.App_link}
+              href="https://discord.gg/2hzaK9zPxx"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Join the angry!
             </a>
             <MyComponent title="Title of MyComponent" text="Text of MyComponent"></MyComponent>
@@ -38,8 +42,7 @@ function App() {
       </div>
 
       {/* RIGHT COLUMN */}
-      <div>
-      </div>
+      <div></div>
     </div>
   );
 }

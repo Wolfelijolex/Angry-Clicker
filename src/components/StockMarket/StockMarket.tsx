@@ -1,31 +1,45 @@
 import React, { useState, useEffect, useRef } from "react";
-import Xarrow, { useXarrow, Xwrapper } from "react-xarrows";
+//import Xarrow, { useXarrow, Xwrapper } from "react-xarrows";
 import styles from "../../styles/components/StockMarket.module.scss";
+import "../../styles/components/Stock.scss";
+import source from "../../assets/angryScaled.png";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../app/store";
+import { moneySlice, angryCoinSlice } from "../../app/slicers";
 
 type StockMarketProps = {
   title: string;
   text: string;
+  className?: string;
 };
 
 function StockMarket(props: StockMarketProps) {
+  //Global state
+  const coins = useSelector((state: RootState) => state.angryCoin);
+  const money = useSelector((state: RootState) => state.money);
+  const dispatch = useDispatch();
   //STATES
-  const [stockPrice, setStockPrice] = useState(0);
-  const [stockClasses, setStockClasses] = useState([0, 0, 0, 0]);
+  const [stockPrice, setStockPrice] = useState(Math.floor(Math.random() * 200));
+  const [stockClasses, setStockClasses] = useState([
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  ]);
   const [buyAmount, setBuyAmount] = useState(0);
   //REFS
   const stockClassesRef = useRef(stockClasses);
   const priceRef = useRef(stockPrice);
   stockClassesRef.current = stockClasses;
   priceRef.current = stockPrice;
-  //XARROW
-  const updateXarrow = useXarrow();
+  props.className ? props.className : "nope";
 
   useEffect(() => {
     const interval = setInterval(() => {
-      priceRef.current = Math.floor(Math.random() * 100);
+      if (Math.floor(Math.random() * 2) && priceRef.current > 20) {
+        priceRef.current = priceRef.current - Math.floor(Math.random() * 20);
+      } else {
+        priceRef.current = priceRef.current + Math.floor(Math.random() * 20);
+      }
       setStockPrice(priceRef.current);
       handleClassChange();
-      updateXarrow();
     }, 1000);
     return () => clearInterval(interval);
   }, []);
@@ -41,30 +55,44 @@ function StockMarket(props: StockMarketProps) {
     setStockClasses(stockClassesRef.current);
   };
 
+  const handleCoinBuy = () => {
+    if (money >= stockPrice * buyAmount) {
+      dispatch(moneySlice.actions.subtract(stockPrice * buyAmount));
+      dispatch(angryCoinSlice.actions.add(buyAmount));
+    }
+  };
+  const handleCoinSell = () => {
+    if (coins >= buyAmount) {
+      dispatch(moneySlice.actions.add(stockPrice * buyAmount));
+      dispatch(angryCoinSlice.actions.subtract(buyAmount));
+    }
+  };
+
   return (
-    <section className={styles.StockMarket}>
+    <section className={`${props.className ? props.className : ""}  ${styles.StockMarket}`}>
       <h2 className={styles.StockMarket__title}>{props.title}</h2>
-      {/* Stockmarket animation */}
-      <div className={styles.StockMarket__graph}>
-        <div className="flex justify-around">
-          <Xwrapper>
-            {stockClasses.map((stockClass, index) => (
-              <div key={`stock-${index}`} id={`stock-${index}`} className={`stock ${stockClass}`}></div>
-            ))}
-            <Xarrow key={`xarrow-${0}`} showHead={false} start={`stock-${0}`} end={`stock-${1}`} />
-            <Xarrow key={`xarrow-${1}`} showHead={false} start={`stock-${1}`} end={`stock-${2}`} />
-            <Xarrow key={`xarrow-${2}`} showHead={false} start={`stock-${2}`} end={`stock-${3}`} />
-          </Xwrapper>
+      <div className={styles.StockMarket__Content}>
+        {/* Stockmarket animation */}
+        <div className={` ${styles.StockMarket__graph}`}>
+          {stockClasses.map((stockClass, index) => (
+            <div key={`stock-${index}`} id={`stock-${index}`} className={`stock-${stockClass}`}>
+              <img src={source} />
+            </div>
+          ))}
+          {}
         </div>
-        <div>
-          <p>{stockPrice}</p>
-          <p>owned</p>
+        <div className={`${styles.StockMarket__stockPrice}`}>
+          <p>value: </p>
+          <p className={"w-7"}>{stockPrice}</p>
         </div>
-      </div>
-      {/* Stockmarket interface */}
-      <div className={styles.StockMarket__interface}>
+        <div className={`${styles.StockMarket__stockOwned}`}>
+          <p>owned: </p>
+          <p className={"w-7"}>{coins}</p>
+        </div>
+        {/* Stockmarket interface */}
+
         {/* Stockmarket amount flex */}
-        <div className={`flex justify-around ${styles.StockMarket__interface__amount}`}>
+        <div className={`flex justify-around ${styles.StockMarket__amount}`}>
           {[1, 10, 100].map((value) => {
             return (
               <button
@@ -80,9 +108,9 @@ function StockMarket(props: StockMarketProps) {
           })}
         </div>
         {/* Stockmarket button flex */}
-        <div className={`flex justify-around ${styles.StockMarket__interface__buttons}`}>
-          <button>BUY</button>
-          <button>SELL</button>
+        <div className={`flex justify-around ${styles.StockMarket__buttons}`}>
+          <button onClick={handleCoinBuy}>BUY</button>
+          <button onClick={handleCoinSell}>SELL</button>
         </div>
       </div>
     </section>
