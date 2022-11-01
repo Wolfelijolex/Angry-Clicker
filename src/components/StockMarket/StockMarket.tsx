@@ -37,6 +37,9 @@ function StockMarket(props: StockMarketProps) {
         priceRef.current = priceRef.current - Math.floor(Math.random() * 20);
       } else {
         priceRef.current = priceRef.current + Math.floor(Math.random() * 20);
+        if (priceRef.current > 200) {
+          priceRef.current = 200;
+        }
       }
       setStockPrice(priceRef.current);
       handleClassChange();
@@ -65,6 +68,10 @@ function StockMarket(props: StockMarketProps) {
     if (coins >= buyAmount) {
       dispatch(moneySlice.actions.add(stockPrice * buyAmount));
       dispatch(angryCoinSlice.actions.subtract(buyAmount));
+    }
+    else if(coins < buyAmount){
+      dispatch(moneySlice.actions.add(stockPrice * coins));
+      dispatch(angryCoinSlice.actions.subtract(coins));
     }
   };
 
@@ -108,9 +115,9 @@ function StockMarket(props: StockMarketProps) {
           })}
         </div>
         {/* Stockmarket button flex */}
-        <div className={`flex justify-around ${styles.StockMarket__buttons}`}>
-          <button onClick={handleCoinBuy}>BUY</button>
-          <button onClick={handleCoinSell}>SELL</button>
+        <div className={`${styles.StockMarket__buttons}`}>
+          <button disabled={buyAmount*stockPrice > money} className={`${styles.StockMarket__buttons__buy}`} onClick={handleCoinBuy}>BUY</button>
+          <button disabled={coins == 0} className={`${styles.StockMarket__buttons__sell}`} onClick={handleCoinSell}>SELL</button>
         </div>
       </div>
     </section>

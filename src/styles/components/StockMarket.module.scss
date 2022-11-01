@@ -24,26 +24,52 @@
     display: flex;
     align-items: flex-end;
     justify-content: space-around;
-    div{
+    div {
       width: 10px;
-    };
+    }
     overflow: hidden;
   }
   &__stockPrice {
     grid-area: number;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
   }
   &__stockOwned {
     grid-area: owned;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
   }
   &__amount {
     grid-area: select;
   }
   &__buttons {
     grid-area: buttons;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    button {
+      width: 100px;
+      height: 35px;
+    }
+    &__buy {
+      @apply bg-green-500;
+      &:hover {
+        @apply bg-green-600;
+      }
+      &:disabled{
+        @apply bg-green-900;
+        color: white;
+      }
+    }
+    &__sell {
+      @apply bg-red-500;
+      &:hover {
+        @apply bg-red-600;
+      }
+      &:disabled{
+        @apply bg-red-900;
+        color: white;
+      }
+    }
   }
 }
-
