@@ -19,7 +19,7 @@ function App() {
     const interval = setInterval(() => {
       let autoClickerMoney = 0;
       autoClickers.forEach((clicker) => {
-        autoClickerMoney += autoClickersState[clicker.id];
+        autoClickerMoney += autoClickersState[clicker.id] * clicker.baseAps;
       });
       dispatch(moneySlice.actions.add(autoClickerMoney));
     }, 1000);
@@ -51,7 +51,10 @@ function App() {
               Join the angry!
             </a>
             <MyComponent title="Title of MyComponent" text="Text of MyComponent"></MyComponent>
-            <button className="text-amber-400 font-sans" onClick={() => dispatch(moneySlice.actions.add(multiplier))}>
+            <button
+              className="text-amber-400 font-sans"
+              onClick={() => dispatch(moneySlice.actions.add(1 * multiplier))}
+            >
               Click me to get Money! you have {money} coins
             </button>
           </header>

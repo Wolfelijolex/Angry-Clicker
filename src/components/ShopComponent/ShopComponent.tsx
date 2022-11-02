@@ -4,34 +4,26 @@ import { RootState } from "app/store";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import SingleItem from "./SingleItem/SingleItem";
-import styles from "styles/components/Store.module.scss";
+import { AmountSelector } from "components/shared/AmountSelector";
 
 function ShopComponent() {
   const appState = useSelector((state: RootState) => state);
   const [buyAmount, setBuyAmount] = useState(1);
 
   const calculatePrice = (price: number, owned: number): number => {
-    return Math.ceil(price * Math.pow(1.15, owned)) * buyAmount;
+    let nextPrice = 0;
+    for (let i = 0; i < buyAmount; i++) {
+      console.log(i);
+      nextPrice += price * (owned + 1 + i);
+    }
+
+    return nextPrice;
   };
 
   return (
     <div className="mx-6">
       <div className="w-100 text-center mb-3 text-2xl font-bold">Angry Shop</div>
-      <div className="flex justify-around">
-        {[1, 10, 100].map((value) => {
-          return (
-            <button
-              className={styles.AmountSelectionButton}
-              type="button"
-              disabled={buyAmount === value}
-              onClick={() => setBuyAmount(value)}
-              key={`buy-${value}`}
-            >
-              {value}x
-            </button>
-          );
-        })}
-      </div>
+      <AmountSelector amount={buyAmount} setAmount={setBuyAmount} />
       <div className="w-100 text-center mt-4 mb-2 text-xl">Upgrade Shop</div>
       {upgrades.map((upgrade) => {
         return (

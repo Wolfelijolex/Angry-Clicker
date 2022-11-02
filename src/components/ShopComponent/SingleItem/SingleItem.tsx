@@ -18,9 +18,7 @@ const isUpgrade = (id: UpgradeId | AutoClickerId): id is UpgradeId => {
   return upgrades.some((upgrade) => upgrade.id === id);
 };
 
-function SingleItem(props: SingleItemProps) {
-  const { id, name, price, amount, owned } = props;
-
+function SingleItem({ id, name, price, amount, owned }: SingleItemProps) {
   const money = useSelector((state: RootState) => state.money);
   const dispatch = useDispatch();
 
@@ -46,7 +44,10 @@ function SingleItem(props: SingleItemProps) {
 
   return (
     <div className={getWrapperClasses()} onClick={() => buyItem()}>
-      <span>{name}<br />€{price}</span>
+      <span>
+        {name}
+        <br />€{price}
+      </span>
       <span className="text-xl font-bold">{owned}</span>
     </div>
   );
