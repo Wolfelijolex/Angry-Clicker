@@ -4,9 +4,9 @@ import { RootState } from "app/store";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import SingleItem from "./SingleItem/SingleItem";
-import { AmountSelector } from "components/shared/AmountSelector";
+import AmountSelector from "components/shared/AmountSelector";
 
-function ShopComponent() {
+export default function ShopComponent() {
   const appState = useSelector((state: RootState) => state);
   const [buyAmount, setBuyAmount] = useState(1);
 
@@ -53,5 +53,3 @@ function ShopComponent() {
     </div>
   );
 }
-
-export default ShopComponent;
