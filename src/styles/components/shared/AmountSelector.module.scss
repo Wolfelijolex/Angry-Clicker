@@ -1,0 +1,8 @@
+.AmountSelectionButton {
+  @apply bg-gray-500 rounded;
+  padding: 5px 20px;
+
+  &:disabled {
+    @apply bg-gray-700 text-gray-500;
+  }
+}

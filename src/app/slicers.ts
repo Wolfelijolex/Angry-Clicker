@@ -49,6 +49,10 @@ export type UpgradeUpdate = {
 const initialAutoClickers: { [key in AutoClickerId]: number } = {
   angryBird: 0,
   angryFarm: 0,
+  angryFactory: 0,
+  angryMine: 0,
+  angryPlanet: 0,
+  angryGalaxy: 0,
 };
 
 export const autoClickersSlice = createSlice({

@@ -1,0 +1,17 @@
+.SingleStoreItemWrapper {
+  @apply bg-gray-500 my-3 px-2 rounded;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.25s ease-in-out;
+}
+
+.Disabled {
+  @apply bg-gray-700 text-gray-500;
+  cursor: default;
+}
