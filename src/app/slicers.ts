@@ -12,6 +12,16 @@ export const moneySlice = createSlice({
   },
 });
 
+// ----------------- AngryCoin -----------------
+export const angryCoinSlice = createSlice({
+  name: "angrycoin",
+  initialState: 0,
+  reducers: {
+    add: (state, action: PayloadAction<number>) => state + action.payload,
+    subtract: (state, action: PayloadAction<number>) => state - action.payload,
+  },
+});
+
 // ----------------- Upgrades -----------------
 const initialUpgrades: { [key in UpgradeId]: number } = {
   clickMultiplier: 1,

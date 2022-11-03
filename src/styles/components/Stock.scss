@@ -1,0 +1,5 @@
+@for $i from 0 through 300 {
+  .stock-#{$i} {
+    height: #{$i}px;
+  }
+}
