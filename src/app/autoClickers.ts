@@ -21,19 +21,19 @@ export const autoClickers = [
     id: "angryMine",
     name: "Angry Mine",
     basePrice: 5_000,
-    baseAps: 5_000,
+    baseAps: 2_500,
   },
   {
     id: "angryPlanet",
     name: "Angry Planet",
     basePrice: 10_000,
-    baseAps: 20_000,
+    baseAps: 5_000,
   },
   {
     id: "angryGalaxy",
     name: "Angry Galaxy",
     basePrice: 100_000,
-    baseAps: 100_000,
+    baseAps: 20_000,
   },
 ] as const;
 
