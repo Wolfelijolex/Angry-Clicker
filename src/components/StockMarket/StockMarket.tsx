@@ -5,6 +5,7 @@ import source from "../../assets/angryScaled.png";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import { moneySlice, angryCoinSlice } from "../../app/slicers";
+import AmountSelector from "components/shared/AmountSelector";
 
 type StockMarketProps = {
   title: string;
@@ -94,23 +95,7 @@ function StockMarket(props: StockMarketProps) {
           <p className={"w-7"}>{coins}</p>
         </div>
         {/* Stockmarket interface */}
-
-        {/* Stockmarket amount flex */}
-        <div className={`flex justify-around ${styles.StockMarket__amount}`}>
-          {[1, 10, 100].map((value) => {
-            return (
-              <button
-                className={""}
-                type="button"
-                disabled={buyAmount === value}
-                onClick={() => setBuyAmount(value)}
-                key={`buy-${value}`}
-              >
-                {value}x
-              </button>
-            );
-          })}
-        </div>
+        <AmountSelector amount={buyAmount} setAmount={setBuyAmount} className={`${styles.StockMarket__amount}`} />
         {/* Stockmarket button flex */}
         <div className={`${styles.StockMarket__buttons}`}>
           <button
