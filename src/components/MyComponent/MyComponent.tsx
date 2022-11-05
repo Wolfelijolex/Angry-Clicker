@@ -14,7 +14,7 @@ function MyComponent(props: MyComponentProps) {
     <div>
       <h1>{props.title}</h1>
       <p>{props.text}</p>
-      <p>{money} money :D</p>
+      <p>{money} angry</p>
     </div>
   );
 }

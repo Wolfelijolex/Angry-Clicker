@@ -36,10 +36,11 @@ function SingleItem({ id, name, price, amount, owned }: SingleItemProps) {
   };
 
   const getWrapperClasses = () => {
+    const classes = `TA-shop-item-${id} ${styles.SingleStoreItemWrapper}`;
     if (money < price) {
-      return `${styles.SingleStoreItemWrapper} ${styles.Disabled}`;
+      return `${classes} ${styles.Disabled}`;
     }
-    return styles.SingleStoreItemWrapper;
+    return classes;
   };
 
   return (

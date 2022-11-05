@@ -31,7 +31,7 @@ function App() {
     <div className="grid grid-cols-3">
       {/* LEFT COLUMN */}
       <div className="grid grid-rows-3 bg-red-300 gap-3">
-        <StockMarket  title="ANGRY Coin"></StockMarket>
+        <StockMarket title="ANGRY Coin"></StockMarket>
         <div>Casino</div>
         <div>Tarot</div>
       </div>
@@ -52,7 +52,7 @@ function App() {
             </a>
             <MyComponent title="Title of MyComponent" text="Text of MyComponent"></MyComponent>
             <button
-              className="text-amber-400 font-sans"
+              className="text-amber-400 font-sans TA-manual-click"
               onClick={() => dispatch(moneySlice.actions.add(1 * multiplier))}
             >
               Click me to get Money! you have {money} coins
