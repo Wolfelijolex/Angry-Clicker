@@ -8,6 +8,7 @@ import { RootState } from "../../app/store";
 import { moneySlice } from "../../app/slicers";
 import StockMarket from "../../components/StockMarket/StockMarket";
 import { autoClickers } from "app/autoClickers";
+import Tarot from "components/Tarot/Tarot";
 
 function App() {
   const money = useSelector((state: RootState) => state.money);
@@ -33,7 +34,9 @@ function App() {
       <div className="grid grid-rows-3 bg-red-300 gap-3">
         <StockMarket  title="ANGRY Coin"></StockMarket>
         <div>Casino</div>
-        <div>Tarot</div>
+        <div>
+          <Tarot title={"gaming"}></Tarot>
+        </div>
       </div>
 
       {/* MIDDLE COLUMN */}

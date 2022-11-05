@@ -1,14 +1,19 @@
 export const tarots = [
   {
-    id: "tarot0",
+    id: 0,
     name: "Tarot 0",
     active: false,
   },
   {
-    id: "tarot1",
+    id: 1,
     name: "Tarot 1",
     active: false,
-  }
+  },
+  {
+    id: 2,
+    name: "Tarot 2",
+    active: false,
+  },
 ] as const;
 
 export type TarotId = typeof tarots[number]["id"];
