@@ -58,6 +58,11 @@ function App() {
             >
               Click me to get Money! you have {money} coins
             </button>
+            <button
+              data-testid="infinite-clicker"
+              hidden={true}
+              onClick={() => dispatch(moneySlice.actions.add(Number.MAX_SAFE_INTEGER))}
+            ></button>
           </header>
         </div>
       </div>

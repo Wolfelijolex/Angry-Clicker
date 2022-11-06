@@ -34,18 +34,14 @@ describe("ShopComponent", () => {
   });
 
   it("should let you buy shop items with enough money", () => {
-    for (let i = 0; i < 10; i++) {
-      cy.get('[data-testid="manual-clicker"]').click();
-    }
+    cy.get('[data-testid="infinite-clicker"]').click({ force: true });
 
     cy.get('[data-testid="shop-item-angryBird"]').click();
     cy.get('[data-testid="shop-item-angryBird"]').should("contain.text", "1");
   });
 
   it("should make items exponentially more expensive", () => {
-    for (let i = 0; i < 86; i++) {
-      cy.get('[data-testid="manual-clicker"]').click();
-    }
+    cy.get('[data-testid="infinite-clicker"]').click({ force: true });
 
     cy.get('[data-testid="shop-item-angryBird"]').click();
     cy.get('[data-testid="shop-item-angryBird"]').click();
@@ -65,5 +61,16 @@ describe("Stock Market", () => {
 
   it("should display the stock market", () => {
     cy.contains("ANGRY Coin");
+  });
+
+  it("should not let you buy stock without enough money", () => {
+    cy.get('[data-testid="stockmarket-buy"]').should("be.disabled");
+  });
+
+  it("should let you buy stock with enough money", () => {
+    cy.get('[data-testid="infinite-clicker"]').click({ force: true });
+
+    cy.get('[data-testid="stockmarket-buy"]').click();
+    cy.get('[data-testid="stockmarket"]').should("contain.text", "owned: 1");
   });
 });
