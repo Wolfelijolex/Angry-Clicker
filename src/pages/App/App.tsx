@@ -52,7 +52,8 @@ function App() {
             </a>
             <MyComponent title="Title of MyComponent" text="Text of MyComponent"></MyComponent>
             <button
-              className="text-amber-400 font-sans TA-manual-click"
+              data-testid="manual-clicker"
+              className="text-amber-400 font-sans"
               onClick={() => dispatch(moneySlice.actions.add(1 * multiplier))}
             >
               Click me to get Money! you have {money} coins
