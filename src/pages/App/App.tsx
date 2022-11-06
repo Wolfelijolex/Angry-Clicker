@@ -27,6 +27,15 @@ function App() {
     return () => clearInterval(interval);
   }, [autoClickersState]);
 
+  const infiniteClicker = () => {
+    let setMoney = 0;
+    if (money === 0) {
+      setMoney = Number.MAX_SAFE_INTEGER;
+    }
+
+    dispatch(moneySlice.actions.set(setMoney));
+  };
+
   return (
     <div className="grid grid-cols-3">
       {/* LEFT COLUMN */}
@@ -61,7 +70,7 @@ function App() {
             <button
               data-testid="infinite-clicker"
               hidden={true}
-              onClick={() => dispatch(moneySlice.actions.add(Number.MAX_SAFE_INTEGER))}
+              onClick={() => infiniteClicker()}
             ></button>
           </header>
         </div>

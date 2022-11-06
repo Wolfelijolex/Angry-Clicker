@@ -9,6 +9,7 @@ export const moneySlice = createSlice({
   reducers: {
     add: (state, action: PayloadAction<number>) => state + action.payload,
     subtract: (state, action: PayloadAction<number>) => state - action.payload,
+    set: (state, action: PayloadAction<number>) => action.payload,
   },
 });
 

@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe("AngryClicker", () => {
+describe("Main App", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000");
   });
@@ -17,9 +17,20 @@ describe("AngryClicker", () => {
     cy.get('[data-testid="manual-clicker"]').click();
     cy.contains("1 angry");
   });
+
+  it("should increment the counter if an autoclicker was bought", () => {
+    cy.get('[data-testid="infinite-clicker"]').click({ force: true });
+    cy.get('[data-testid="shop-item-angryBird"]').click();
+    cy.get('[data-testid="infinite-clicker"]').click({ force: true });
+
+    cy.contains("0 angry");
+    cy.wait(1500);
+    cy.contains("1 angry");
+
+  })
 });
 
-describe("ShopComponent", () => {
+describe("Shop Component", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000");
   });
@@ -73,4 +84,14 @@ describe("Stock Market", () => {
     cy.get('[data-testid="stockmarket-buy"]').click();
     cy.get('[data-testid="stockmarket"]').should("contain.text", "owned: 1");
   });
+
+  it("should change the price of the stock", () => {
+    cy.get('[data-testid="stockmarket-price"]').invoke("text").then((initial) => {
+      cy.wait(1000);
+      cy.get('[data-testid="stockmarket-price"]').invoke("text").then((later) => {
+        expect(initial).not.to.equal(later);
+      });
+    })
+  });
 });
+

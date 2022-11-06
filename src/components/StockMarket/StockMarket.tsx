@@ -88,7 +88,7 @@ function StockMarket(props: StockMarketProps) {
         </div>
         <div className={`${styles.StockMarket__stockPrice}`}>
           <p>value: </p>
-          <p className={"w-7"}>{stockPrice}</p>
+          <p data-testid="stockmarket-price" className={"w-7"}>{stockPrice}</p>
         </div>
         <div className={`${styles.StockMarket__stockOwned}`}>
           <p>owned: </p>
