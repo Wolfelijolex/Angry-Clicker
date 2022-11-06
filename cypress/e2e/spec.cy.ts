@@ -26,8 +26,7 @@ describe("Main App", () => {
     cy.contains("0 angry");
     cy.wait(1500);
     cy.contains("1 angry");
-
-  })
+  });
 });
 
 describe("Shop Component", () => {
@@ -91,7 +90,7 @@ describe("Stock Market", () => {
       cy.get('[data-testid="stockmarket-price"]').invoke("text").then((later) => {
         expect(initial).not.to.equal(later);
       });
-    })
+    });
   });
 });
 
