@@ -1,0 +1,39 @@
+name: Angry Clicker
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  Lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "yarn"
+      - name: Install dependencies
+        run: yarn --prefer-offline
+      - name: Run linting
+        run: yarn lint
+
+  Test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run tests
+        uses: cypress-io/github-action@v4
+        with:
+          start: yarn gaming
+          wait-on: http://localhost:3000
+          wait-on-timeout: 60
