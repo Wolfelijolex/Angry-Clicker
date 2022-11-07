@@ -17,7 +17,7 @@ function Tarot(props: TarotProps) {
 
   const rollNewTarot = () => {
     handleTarotChange(currentTarot);
-    const dice = Math.floor(Math.random() * 2 + 1);
+    const dice = Math.floor(Math.random() * 3 + 1);
     let currTarotId: TarotId = 0;
     if (dice == 1) {
       setCurrentTarot(1);
