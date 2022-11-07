@@ -28,7 +28,6 @@ function StockMarket(props: StockMarketProps) {
   const priceRef = useRef(stockPrice);
   stockClassesRef.current = stockClasses;
   priceRef.current = stockPrice;
-  props.className ? props.className : "nope";
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -74,7 +73,7 @@ function StockMarket(props: StockMarketProps) {
   };
 
   return (
-    <section data-testid="stockmarket" className={`${props.className ? props.className : ""}  ${styles.StockMarket}`}>
+    <section data-testid="stockmarket" className={`${props.className ?? ""}  ${styles.StockMarket}`}>
       <h2 className={styles.StockMarket__title}>{props.title}</h2>
       <div className={styles.StockMarket__Content}>
         {/* Stockmarket animation */}

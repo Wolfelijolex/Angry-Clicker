@@ -23,7 +23,7 @@
     "build": "react-scripts build",
     "test": "cypress open",
     "eject": "react-scripts eject",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore",
     "predockerize": "yarn build",
     "dockerize": "docker buildx build -t woife5/angry-clicker:latest -f ./Dockerfile --platform=linux/arm64,linux/amd64,linux/arm/v7,linux/arm/v6 -o type=registry ."
   },
