@@ -22,13 +22,12 @@ function StockMarket(props: StockMarketProps) {
   const [stockClasses, setStockClasses] = useState([
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   ]);
-  const [buyAmount, setBuyAmount] = useState(0);
+  const [buyAmount, setBuyAmount] = useState(1);
   //REFS
   const stockClassesRef = useRef(stockClasses);
   const priceRef = useRef(stockPrice);
   stockClassesRef.current = stockClasses;
   priceRef.current = stockPrice;
-  props.className ? props.className : "nope";
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -74,7 +73,7 @@ function StockMarket(props: StockMarketProps) {
   };
 
   return (
-    <section className={`${props.className ? props.className : ""}  ${styles.StockMarket}`}>
+    <section data-testid="stockmarket" className={`${props.className ?? ""}  ${styles.StockMarket}`}>
       <h2 className={styles.StockMarket__title}>{props.title}</h2>
       <div className={styles.StockMarket__Content}>
         {/* Stockmarket animation */}
@@ -88,7 +87,7 @@ function StockMarket(props: StockMarketProps) {
         </div>
         <div className={`${styles.StockMarket__stockPrice}`}>
           <p>value: </p>
-          <p className={"w-7"}>{stockPrice}</p>
+          <p data-testid="stockmarket-price" className={"w-7"}>{stockPrice}</p>
         </div>
         <div className={`${styles.StockMarket__stockOwned}`}>
           <p>owned: </p>
@@ -99,6 +98,7 @@ function StockMarket(props: StockMarketProps) {
         {/* Stockmarket button flex */}
         <div className={`${styles.StockMarket__buttons}`}>
           <button
+            data-testid="stockmarket-buy"
             disabled={buyAmount * stockPrice > money || buyAmount == 0}
             className={`${styles.StockMarket__buttons__buy}`}
             onClick={handleCoinBuy}
@@ -106,6 +106,7 @@ function StockMarket(props: StockMarketProps) {
             BUY
           </button>
           <button
+            data-testid="stockmarket-sell"
             disabled={coins == 0 || buyAmount == 0}
             className={`${styles.StockMarket__buttons__sell}`}
             onClick={handleCoinSell}

@@ -27,11 +27,20 @@ function App() {
     return () => clearInterval(interval);
   }, [autoClickersState]);
 
+  const infiniteClicker = () => {
+    let setMoney = 0;
+    if (money === 0) {
+      setMoney = Number.MAX_SAFE_INTEGER;
+    }
+
+    dispatch(moneySlice.actions.set(setMoney));
+  };
+
   return (
     <div className="grid grid-cols-3">
       {/* LEFT COLUMN */}
       <div className="grid grid-rows-3 bg-red-300 gap-3">
-        <StockMarket  title="ANGRY Coin"></StockMarket>
+        <StockMarket title="ANGRY Coin"></StockMarket>
         <div>Casino</div>
         <div>Tarot</div>
       </div>
@@ -52,11 +61,17 @@ function App() {
             </a>
             <MyComponent title="Title of MyComponent" text="Text of MyComponent"></MyComponent>
             <button
+              data-testid="manual-clicker"
               className="text-amber-400 font-sans"
               onClick={() => dispatch(moneySlice.actions.add(1 * multiplier))}
             >
               Click me to get Money! you have {money} coins
             </button>
+            <button
+              data-testid="infinite-clicker"
+              hidden={true}
+              onClick={() => infiniteClicker()}
+            ></button>
           </header>
         </div>
       </div>

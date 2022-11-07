@@ -21,9 +21,9 @@
   "scripts": {
     "gaming": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "cypress open",
     "eject": "react-scripts eject",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore",
     "predockerize": "yarn build",
     "dockerize": "docker buildx build -t woife5/angry-clicker:latest -f ./Dockerfile --platform=linux/arm64,linux/amd64,linux/arm/v7,linux/arm/v6 -o type=registry ."
   },
@@ -42,6 +42,7 @@
   "devDependencies": {
     "@reduxjs/toolkit": "^1.8.6",
     "autoprefixer": "^10.4.13",
+    "cypress": "^10.11.0",
     "eslint": "^8.26.0",
     "eslint-plugin-editorconfig": "^4.0.2",
     "eslint-plugin-react": "^7.31.10",
