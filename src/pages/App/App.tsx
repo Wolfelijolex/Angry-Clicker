@@ -32,11 +32,11 @@ function App() {
     <div className="grid grid-cols-3">
       {/* LEFT COLUMN */}
       <div className="grid grid-rows-3 bg-red-300 gap-3">
-        <StockMarket  title="ANGRY Coin"></StockMarket>
-        <div>Casino</div>
+        <StockMarket title="ANGRY Coin"></StockMarket>
         <div>
-          <Tarot title={"gaming"}></Tarot>
+          <Tarot title={"TAR0T"}></Tarot>
         </div>
+        <div>CASINO</div>
       </div>
 
       {/* MIDDLE COLUMN */}

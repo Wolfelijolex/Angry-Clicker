@@ -81,9 +81,10 @@ export type AutoClickerUpdate = {
 };
 // ----------------- Tarots -----------------
 const intialTarot: { [key in TarotId]: boolean } = {
-  0: false,
+  0: true,
   1: false,
   2: false,
+  3: false,
 };
 
 export const tarotSlice = createSlice({
