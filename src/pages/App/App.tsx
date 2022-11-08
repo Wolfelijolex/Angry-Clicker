@@ -22,6 +22,7 @@ function App() {
       autoClickers.forEach((clicker) => {
         autoClickerMoney += autoClickersState[clicker.id] * clicker.baseAps;
       });
+
       dispatch(moneySlice.actions.add(autoClickerMoney));
     }, 1000);
 
