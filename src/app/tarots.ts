@@ -12,7 +12,7 @@ export const tarots = [
     id: 1,
     name: "The Man",
     active: false,
-    desc: "Let the angry be released! \nAngry by 10%.",
+    desc: "Let the angry be released! \n Become 10% more angry.",
     img: tarot1,
     mod: 0.1,
   },
