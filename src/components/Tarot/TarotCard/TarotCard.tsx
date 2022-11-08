@@ -15,10 +15,8 @@ function TarotCard(props: TarotCardProps) {
   return (
     <>
       {back ? (
-        <section className={`${styles.tarotCard} ${styles.tarotCard__back}`} >
-          <div className={`${styles.tarotCard__ImageWrapper}`}>
-            <img src={tarot.img} className={`${styles.tarotCard__Image} ${styles.tarotCard__Image__back}`} />
-          </div>
+        <section className={`${styles.tarotCard} ${styles.tarotCard__back}`}>
+          <img src={tarot.img} className={`${styles.tarotCard__Image} ${styles.tarotCard__Image__back}`} />
         </section>
       ) : (
         <section className={styles.tarotCard}>

@@ -36,7 +36,6 @@ function App() {
         <div>
           <Tarot title={"TAR0T"}></Tarot>
         </div>
-        <div>CASINO</div>
       </div>
 
       {/* MIDDLE COLUMN */}

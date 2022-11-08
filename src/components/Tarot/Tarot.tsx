@@ -59,14 +59,14 @@ function Tarot(props: TarotProps) {
     //da empty? :0
   };
 
-  const handleFlip = (set:boolean) => {
+  const handleFlip = (set: boolean) => {
     setCardFlip(set);
   };
 
   return (
-    <section>
-      <h1>{props.title}</h1>
-      <div className={styles.Tarot}>
+    <section className={styles.Tarot}>
+      <h1 className={styles.Tarot__Title}>{props.title}</h1>
+      <div className={styles.Tarot__Wrapper}>
         <div
           className={`flex justify-center ${styles.Tarot__Front} ${cardFlip ? styles.flip : ""}`}
           onClick={tarot[0] ? rollNewTarot : handleNope}
