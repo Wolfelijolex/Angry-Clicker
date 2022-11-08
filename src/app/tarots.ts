@@ -6,6 +6,7 @@ export const tarots = [
     active: false,
     desc: "Flip the card to reveal your fate 😡",
     img: tarot0,
+    mod: 0,
   },
   {
     id: 1,
@@ -29,6 +30,7 @@ export const tarots = [
     active: false,
     desc: "You fell off \nLose all angry",
     img: tarot3,
+    mod: 0,
   },
   {
     id: 4,
@@ -36,6 +38,7 @@ export const tarots = [
     active: false,
     desc: "Party Time!",
     img: tarot4,
+    mod: 1337,
   },
 ] as const;
 

@@ -22,21 +22,11 @@ function Tarot(props: TarotProps) {
     handleFlip(true);
     handleTarotChange(currentTarot);
     const dice = Math.floor(Math.random() * (Object.keys(tarot).length - 1) + 1);
-    let currTarotId: TarotId = 0;
-    if (dice == 1) {
-      currTarotId = 1;
-    } else if (dice == 2) {
-      currTarotId = 2;
-    } else if (dice == 3) {
-      currTarotId = 3;
-    } else if (dice == 4) {
-      currTarotId = 4;
-    }
-    setCurrentTarot(currTarotId);
-    handleTarotChange(currTarotId);
-    handleCertainTarot(currTarotId);
+    setCurrentTarot(dice as TarotId);
+    handleTarotChange(dice as TarotId);
+    handleCertainTarot(dice as TarotId);
     setTimeout(() => {
-      handleTarotChange(currTarotId);
+      handleTarotChange(dice as TarotId);
       setCurrentTarot(0);
       handleFlip(false);
       dispatch(tarotSlice.actions.set({ id: 0, set: true }));
@@ -59,16 +49,19 @@ function Tarot(props: TarotProps) {
   };
 
   const handleCertainTarot = (id: TarotId) => {
+    const mod = tarots[id].mod;
     switch (id) {
     case 1:
-      dispatch(moneySlice.actions.add(Math.round(money * tarots[1].mod)));
+      dispatch(moneySlice.actions.add(Math.round(money * mod)));
       break;
     case 2:
-      dispatch(moneySlice.actions.add(Math.round(money * tarots[2].mod)));
+      dispatch(moneySlice.actions.add(Math.round(money * mod)));
       break;
     case 3:
+      dispatch(moneySlice.actions.set(mod));
       break;
     case 4:
+      dispatch(moneySlice.actions.set(mod));
       break;
     }
   };
