@@ -4,18 +4,22 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import TarotCard from "./TarotCard/TarotCard";
+import styles from "../../styles/components/Tarot.module.scss";
 
 type TarotProps = {
   title: string;
 };
 
 function Tarot(props: TarotProps) {
-  const tarotDuration = 2000;
+  const tarotDuration = 5000;
   const tarot = useSelector((state: RootState) => state.tarot);
   const [currentTarot, setCurrentTarot] = React.useState<TarotId>(0);
   const dispatch = useDispatch();
 
+  const [cardFlip, setCardFlip] = React.useState<boolean>(false);
+
   const rollNewTarot = () => {
+    handleFlip(true);
     handleTarotChange(currentTarot);
     const dice = Math.floor(Math.random() * 3 + 1);
     let currTarotId: TarotId = 0;
@@ -35,6 +39,7 @@ function Tarot(props: TarotProps) {
     setTimeout(() => {
       handleTarotChange(currTarotId);
       setCurrentTarot(0);
+      handleFlip(false);
       dispatch(tarotSlice.actions.set({ id: 0, set: true }));
     }, tarotDuration);
   };
@@ -51,15 +56,26 @@ function Tarot(props: TarotProps) {
   };
 
   const handleNope = () => {
-    console.log("gaming");
+    //da empty? :0
+  };
+
+  const handleFlip = (set:boolean) => {
+    setCardFlip(set);
   };
 
   return (
     <section>
       <h1>{props.title}</h1>
-
-      <div onClick={tarot[0] ? rollNewTarot : handleNope}>
-        <TarotCard id={currentTarot}></TarotCard>
+      <div className={styles.Tarot}>
+        <div
+          className={`flex justify-center ${styles.Tarot__Front} ${cardFlip ? styles.flip : ""}`}
+          onClick={tarot[0] ? rollNewTarot : handleNope}
+        >
+          <TarotCard id={currentTarot}></TarotCard>
+        </div>
+        <div className={`flex justify-center ${styles.Tarot__Back} ${cardFlip ? styles.flip : ""}`}>
+          <TarotCard id={0} back={true}></TarotCard>
+        </div>
       </div>
     </section>
   );

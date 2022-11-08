@@ -1,0 +1,23 @@
+.Tarot {
+  position: relative;
+  &__Front {
+    transform: perspective(1000px) rotateY(0deg);
+  }
+
+  &__Back {
+    transform: perspective(1000px) rotateY(-180deg);
+  }
+}
+.Tarot__Front,
+.Tarot__Back {
+  transition: transform 1s ease;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.Tarot__Front.flip {
+transform: perspective(1000px) rotateY(1440deg);
+}
+.Tarot__Back.flip {
+  transform: perspective(1000px) rotateY(1260deg);
+}

@@ -31,7 +31,7 @@ function App() {
   return (
     <div className="grid grid-cols-3">
       {/* LEFT COLUMN */}
-      <div className="grid grid-rows-3 bg-red-300 gap-3">
+      <div className="h-fit flex flex-col bg-red-300 gap-10">
         <StockMarket title="ANGRY Coin"></StockMarket>
         <div>
           <Tarot title={"TAR0T"}></Tarot>

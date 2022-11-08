@@ -4,7 +4,7 @@ export const tarots = [
     id: 0,
     name: "Tarot Available",
     active: false,
-    desc: "Flip the card to reveal your fate 😡",
+    desc: "Flip the card \n to reveal your fate 😡",
     img: tarot0,
   },
   {
@@ -26,9 +26,10 @@ export const tarots = [
   },
   {
     id: 3,
-    name: "Waltuh",
+    name: "Waltuh fell off",
     active: false,
-    desc: "Tarot 3 description",
+    desc: `The pain is imeasurable \n
+    lose all angry`,
     img: tarot3,
   },
 ] as const;
