@@ -43,7 +43,7 @@ function SingleItem({ id, name, price, amount, owned }: SingleItemProps) {
   };
 
   return (
-    <div className={getWrapperClasses()} onClick={() => buyItem()}>
+    <div data-testid={`shop-item-${id}`} className={getWrapperClasses()} onClick={() => buyItem()}>
       <span>
         {name}
         <br />€{price}

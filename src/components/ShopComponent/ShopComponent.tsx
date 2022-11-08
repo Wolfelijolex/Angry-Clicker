@@ -24,7 +24,7 @@ export default function ShopComponent() {
   const [buyAmount, setBuyAmount] = useState(1);
 
   return (
-    <div className="mx-6">
+    <div data-testid="shop" className="mx-6">
       <div className="w-100 text-center mb-3 text-2xl font-bold">Angry Shop</div>
       <AmountSelector amount={buyAmount} setAmount={setBuyAmount} />
       <div className="w-100 text-center mt-4 mb-2 text-xl">Upgrade Shop</div>
