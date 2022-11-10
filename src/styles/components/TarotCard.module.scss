@@ -1,0 +1,29 @@
+.tarotCard {
+  @apply bg-slate-500 flex flex-col items-center;
+  padding: 20px;
+  min-width: 50%;
+  width: 50%;
+  height: 80%;
+  align-items: center;
+  &__back {
+    @apply justify-center;
+  }
+  &__ImageWrapper {
+    @apply bg-slate-800;
+    width: 100%;
+  }
+  &__Image {
+    aspect-ratio: 16/9;
+    &__back {
+      height: 100%;
+     object-fit: cover;
+    }
+  }
+  &__Name {
+    @apply font-bold text-2xl;
+  }
+  &__Desc {
+    @apply text-center;
+    white-space:  pre-wrap;
+  }
+}

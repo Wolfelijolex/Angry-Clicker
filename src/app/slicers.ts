@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AutoClickerId } from "./autoClickers";
+import { TarotId } from "./tarots";
 import { UpgradeId } from "./upgrades";
 
 // ----------------- Money -----------------
@@ -78,4 +79,30 @@ export const autoClickersSlice = createSlice({
 export type AutoClickerUpdate = {
   id: AutoClickerId;
   amount: number;
+};
+// ----------------- Tarots -----------------
+const intialTarot: { [key in TarotId]: boolean } = {
+  0: true,
+  1: false,
+  2: false,
+  3: false,
+  4: false,
+};
+
+export const tarotSlice = createSlice({
+  name: "tarots",
+  initialState: intialTarot,
+  reducers: {
+    set: (state, action: PayloadAction<TarotUpdate>) => {
+      return {
+        ...state,
+        [action.payload.id]: action.payload.set,
+      };
+    },
+  },
+});
+
+export type TarotUpdate = {
+  id: TarotId;
+  set: boolean;
 };
