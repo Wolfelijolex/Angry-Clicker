@@ -39,15 +39,15 @@ function App() {
   };
 
   return (
-    <div className="grid grid-cols-3">
+    <div className={styles.LayoutGrid}>
       {/* LEFT COLUMN */}
-      <div className="flex flex-col bg-red-300">
+      <div className={`flex flex-col bg-red-300 h-screen ${styles.LayoutGrid__Left}`}>
         <StockMarket title="ANGRY Coin"></StockMarket>
         <Tarot title={"TAR0T"}></Tarot>
       </div>
 
       {/* MIDDLE COLUMN */}
-      <div className="border-slate-300 border-solid border-x-2">
+      <div className={`border-slate-300 border-solid border-x-2  h-screen ${styles.LayoutGrid__Mid}`}>
         <div className={styles.App}>
           <header className={styles.App_header}>
             <img src={logo} className={styles.App_logo} alt="logo" />
@@ -74,7 +74,7 @@ function App() {
       </div>
 
       {/* RIGHT COLUMN */}
-      <div>
+      <div  className={`h-screen ${styles.LayoutGrid__Right}`}>
         <ShopComponent />
       </div>
     </div>
