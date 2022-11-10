@@ -41,11 +41,9 @@ function App() {
   return (
     <div className="grid grid-cols-3">
       {/* LEFT COLUMN */}
-      <div className="h-fit flex flex-col bg-red-300 gap-10">
+      <div className="flex flex-col bg-red-300">
         <StockMarket title="ANGRY Coin"></StockMarket>
-        <div>
-          <Tarot title={"TAR0T"}></Tarot>
-        </div>
+        <Tarot title={"TAR0T"}></Tarot>
       </div>
 
       {/* MIDDLE COLUMN */}
@@ -70,11 +68,7 @@ function App() {
             >
               Click me to get Money! you have {money} coins
             </button>
-            <button
-              data-testid="infinite-clicker"
-              hidden={true}
-              onClick={() => infiniteClicker()}
-            ></button>
+            <button data-testid="infinite-clicker" hidden={true} onClick={() => infiniteClicker()}></button>
           </header>
         </div>
       </div>

@@ -1,8 +1,8 @@
 .tarotCard {
-  @apply bg-slate-500 flex flex-col items-center gap-5;
+  @apply bg-slate-500 flex flex-col items-center;
   padding: 20px;
-  min-width: 40%;
-  width: 40%;
+  min-width: 50%;
+  width: 50%;
   height: 80%;
   align-items: center;
   &__back {
