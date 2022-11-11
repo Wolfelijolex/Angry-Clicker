@@ -9,6 +9,8 @@ import { moneySlice } from "../../app/slicers";
 import StockMarket from "../../components/StockMarket/StockMarket";
 import { autoClickers } from "app/autoClickers";
 import Tarot from "components/Tarot/Tarot";
+import CreditsPopupComponent from "components/CreditsPopupComponent/CreditsPopupComponent";
+
 
 function App() {
   const money = useSelector((state: RootState) => state.money);
@@ -39,8 +41,13 @@ function App() {
   };
 
   return (
+    
+    
     <div className={styles.LayoutGrid}>
+      
+
       {/* LEFT COLUMN */}
+      
       <div className={`flex flex-col bg-red-300 h-screen ${styles.LayoutGrid__Left}`}>
         <StockMarket title="ANGRY Coin"></StockMarket>
         <Tarot title={"TAR0T"}></Tarot>
@@ -48,6 +55,9 @@ function App() {
 
       {/* MIDDLE COLUMN */}
       <div className={`border-slate-300 border-solid border-x-2  h-screen ${styles.LayoutGrid__Mid}`}>
+
+        <CreditsPopupComponent></CreditsPopupComponent>
+
         <div className={styles.App}>
           <header className={styles.App_header}>
             <img src={logo} className={styles.App_logo} alt="logo" />
@@ -74,7 +84,7 @@ function App() {
       </div>
 
       {/* RIGHT COLUMN */}
-      <div  className={`h-screen ${styles.LayoutGrid__Right}`}>
+      <div className={`h-screen ${styles.LayoutGrid__Right}`}>
         <ShopComponent />
       </div>
     </div>

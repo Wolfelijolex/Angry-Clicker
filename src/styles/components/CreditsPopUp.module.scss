@@ -1,0 +1,25 @@
+.CreditsButton {
+  width: 2.5rem;
+  height: 2.5rem;
+  text-align: center;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.CreditsButton:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+.CreditsButton:active {
+  background-color: rgb(220, 220, 220);
+  color: rgb(255, 255, 255);
+}
+
+
+
