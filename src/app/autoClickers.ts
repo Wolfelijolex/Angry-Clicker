@@ -1,7 +1,7 @@
 export const autoClickers = [
   {
     id: "angryBird",
-    name: "Angry Bird 😡",
+    name: "Angry Bird",
     basePrice: 10,
   },
   {
