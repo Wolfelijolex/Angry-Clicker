@@ -1,0 +1,84 @@
+.StockMarket {
+  @apply bg-rose-100;
+  margin: 10px;
+  padding: 15px;
+  border-radius: 10px;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  &__title {
+    @apply text-red-900 font-bold text-2xl;
+    display: flex;
+    justify-content: center;
+  }
+  &__Content {
+    padding: 5px;
+    display: grid;
+    grid-template-areas:
+      "graph graph graph number"
+      "graph graph graph owned"
+      "select select select select"
+      "buttons buttons buttons buttons";
+    grid-template-rows: 1fr 1fr 0.5fr 0.5fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    height: 100%;
+    align-items: center;
+  }
+  &__graph {
+    border: 4px solid #ffffff;
+    grid-area: graph;
+    height: 95%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    div {
+      width: 10px;
+    }
+    overflow: hidden;
+  }
+  &__stockPrice {
+    @apply text-red-900 font-bold;
+    grid-area: number;
+    display: flex;
+    justify-content: space-around;
+  }
+  &__stockOwned {
+    @apply text-red-900 font-bold;
+    grid-area: owned;
+    display: flex;
+    justify-content: space-around;
+  }
+  &__amount {
+    grid-area: select;
+  }
+  &__buttons {
+    grid-area: buttons;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    button {
+      width: 100px;
+      height: 35px;
+    }
+    &__buy {
+      @apply bg-green-500;
+      &:hover {
+        @apply bg-green-600;
+      }
+      &:disabled {
+        @apply bg-green-900;
+        color: white;
+      }
+    }
+    &__sell {
+      @apply bg-red-500;
+      &:hover {
+        @apply bg-red-600;
+      }
+      &:disabled {
+        @apply bg-red-900;
+        color: white;
+      }
+    }
+  }
+}

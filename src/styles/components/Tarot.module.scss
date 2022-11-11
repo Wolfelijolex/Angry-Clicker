@@ -1,0 +1,43 @@
+.Tarot {
+  @apply bg-rose-100;
+  margin: 10px;
+  padding: 15px;
+  border-radius: 10px;
+  height: 50%;
+  &__Title {
+    @apply text-red-900 font-bold text-2xl;
+    display: flex;
+    justify-content: center;
+  }
+  &__Wrapper {
+    height: 100%;
+    position: relative;
+
+  }
+  &__Front {
+    cursor: pointer;
+    transform: rotateY(0deg);
+  }
+
+  &__Back {
+    transform: rotateY(-180deg);
+  }
+}
+.Tarot__Front,
+.Tarot__Back {
+  transition: transform 2s ease;
+  position: absolute;
+  top: 6%;
+  backface-visibility: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.Tarot__Front.flip {
+  cursor: auto;
+  transform: rotateY(1440deg);
+}
+.Tarot__Back.flip {
+  cursor: auto;
+  transform: rotateY(1260deg);
+}

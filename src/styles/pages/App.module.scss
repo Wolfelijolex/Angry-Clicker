@@ -14,14 +14,12 @@
 }
 
 .App_header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App_link {
@@ -34,5 +32,24 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.LayoutGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "left middle right";
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-areas: "middle" "left" "right";
+  }
+  &__Left {
+    grid-area: left;
+  }
+  &__Mid {
+    grid-area: middle;
+  }
+  &__Right {
+    grid-area: right;
   }
 }
