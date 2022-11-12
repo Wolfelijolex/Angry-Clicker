@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styles from "styles/components/CreditsPopUp.module.scss";
-import CreditsPopUp from "./CreditsPopUpComponent";
+import CreditsPopUpComponent from "./CreditsPopUpComponent";
 
-function creditsPopupComponent() {
+function CreditsButtonComponent() {
   const [openPopup, setOpenPopup] = useState(false);
 
   const togglePopUp = () => setOpenPopup(!openPopup);
@@ -13,9 +13,9 @@ function creditsPopupComponent() {
       <button className={styles.CreditsButton} onClick={() => togglePopUp()}>
         i
       </button>
-      <CreditsPopUp isOpen={openPopup} onClose={togglePopUp}></CreditsPopUp>
+      <CreditsPopUpComponent isOpen={openPopup} onClose={togglePopUp}></CreditsPopUpComponent>
     </div>
   );
 }
 
-export default creditsPopupComponent;
+export default CreditsButtonComponent;
