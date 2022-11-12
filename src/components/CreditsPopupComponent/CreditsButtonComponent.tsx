@@ -1,24 +1,26 @@
 import React, { useState } from "react";
 import styles from "styles/components/CreditsPopUp.module.scss";
 import CreditsPopUpComponent from "./CreditsPopUpComponent";
+import SettingsButtonComponent from "./SettingsButtonComponent";
 
 function CreditsButtonComponent() {
-  const [openPopup, setOpenPopup] = useState(false);
-  const [isCredits, setIsCredits] = useState(true);
+  const [openCreditsPopup, setCreditsOpenPopup] = useState(false);
+  const toggleCreditsPopUp = () => setCreditsOpenPopup(!openCreditsPopup);
 
-  const togglePopUp = () => setOpenPopup(!openPopup);
+  const [openSettingsPopup, setSettingsOpenPopup] = useState(false);
+  const toggleSettingsPopUp = () => setSettingsOpenPopup(!openSettingsPopup);
 
   return (
     <div>
-      <button className={styles.PopUpButton} onClick={() => togglePopUp()}>
+      <button className={styles.PopUpButton} onClick={() => toggleCreditsPopUp()}>
         i
       </button>
-      <CreditsPopUpComponent isCredits= {isCredits} isOpen={openPopup} onClose={togglePopUp}></CreditsPopUpComponent>
+      <CreditsPopUpComponent isOpen={openCreditsPopup} onClose={toggleCreditsPopUp}></CreditsPopUpComponent>
       
-      <button className={styles.PopUpButton} onClick={() => togglePopUp()}>
+      <button className={styles.PopUpButton} onClick={() => toggleSettingsPopUp()}>
         ⚙️
       </button>
-      <CreditsPopUpComponent isCredits={isCredits} isOpen={openPopup} onClose={togglePopUp}></CreditsPopUpComponent>
+      <SettingsButtonComponent isOpen={openSettingsPopup} onClose={toggleSettingsPopUp}></SettingsButtonComponent>
     </div>
   );
 }
