@@ -104,7 +104,12 @@
   color: rgb(0, 0, 0);
  }
  .name:hover {
-  cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='47' height='56' viewport='0 0 100 100' style='fill:black;font-size:28px;'><text y='50%'>😡</text></svg>") 16 0,auto;
+  cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='47' height='56' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>😡</text></svg>") 16 0,auto;
   color: rgb(125, 20, 52);
   transition: ease-in-out 0.2s;
  }
+
+ .name:active {
+  cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='28' height='34' viewport='0 0 100 100' style='fill:black;font-size:17px;'><text y='50%'>😡</text></svg>") 16 0,auto; 
+  transition: ease-in-out 0.2s;
+}
