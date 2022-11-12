@@ -53,8 +53,7 @@
   text-align: center;
   display: flex;
   margin: auto;
-  height: 50%;
-  width: 50%;
+
   background-color: whitesmoke;
   box-shadow: 5rem;
 }
@@ -90,12 +89,21 @@
   transition: ease-in-out 0.2s;
 }
 .creditsButtonOverLayMenu__body {
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(230, 230, 230);
-  color: rgb(0, 0, 0);
-  width: 100%;
-  font-size: 1rem;
-  padding: 0.5rem;
+  padding: 2rem;
+  padding-top: 4rem;
+  text-align: center;
+  color:rgb(0, 0, 0);
   font-weight: bold;
+  margin: auto;
+ }
+ .name {
+  margin: auto;
+  font-size: 1.5rem;
+  transition: ease-in-out 0.2s;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+ }
+ .name:hover {
+  color: rgb(125, 20, 52);
+  transition: ease-in-out 0.2s;
  }

@@ -19,10 +19,18 @@ const CreditsPopUp = (props: CreditsPopUpProps) =>  {
           <div className={styles.TopBar}>
             <div className={styles.creditsButtonOverLayMenu__header}> credits </div>
             <button className={styles.closeButton} onClick={() => onClose()}>x</button>
+            
           </div>
           <div className={styles.creditsButtonOverLayMenu__body}>
+            <div className={styles.name}>😡😡😡😡😡😡😡😡</div>
+            <div className={styles.name}>Wolfgang Schwendtbauer, BSc.</div>
+            <div className={styles.name}>Alexander Gärtner, BSc.</div>
+            <div className={styles.name}>Johanna Krennhuber, BSc.</div>
+            <div className={styles.name}>Felix Rader, BSc.</div>
+            <div className={styles.name}>😡😡😡😡😡😡😡😡</div>
           </div>
         </div>
+        
       </div>
     );
   }
