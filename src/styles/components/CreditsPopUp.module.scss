@@ -22,7 +22,7 @@
   color: rgb(255, 255, 255);
 }
 
-.creditsPopUp {
+.creditsPopUpBackground {
   position: absolute;
   top: 0;
   left: 0;
@@ -31,14 +31,24 @@
   justify-content: center;
   align-items: center;
   z-index: 200;
-  transition: all 0.2s ease-in-out;
-
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(78, 78, 78, 0.5);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(7px);
-  cursor: pointer;
+  cursor: default;
 };
 
+.creditsButtonOverLayMenu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: flex;
+  margin: auto;
+  height: 20rem;
+  width: 30rem;
+  background-color: whitesmoke;
+}
 
 
