@@ -1,5 +1,5 @@
 import React from "react";
-// import styles from "styles/components/CreditsPopUp.module.scss";
+import styles from "styles/components/CreditsPopUp.module.scss";
 
 interface CreditsPopUpProps {
   isOpen: boolean;
@@ -7,12 +7,11 @@ interface CreditsPopUpProps {
 }
 
 const CreditsPopUp = (props: CreditsPopUpProps) => {
-  const isOpen  = props.isOpen;
+  const isOpen = props.isOpen;
   if (!isOpen) {
     return null;
   } else if (isOpen) {
-    console.log(isOpen);
-    return <div> true </div>;
+    return <button className={styles.creditsPopUp}></button>;
   }
   return null;
 };
