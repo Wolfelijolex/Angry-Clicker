@@ -9,7 +9,7 @@ import { moneySlice } from "../../app/slicers";
 import StockMarket from "../../components/StockMarket/StockMarket";
 import { autoClickers } from "app/autoClickers";
 import Tarot from "components/Tarot/Tarot";
-import CreditsPopupComponent from "components/CreditsPopupComponent/CreditsPopupComponent";
+import CreditsPopupComponent from "components/CreditsPopupComponent/CreditsButtonComponent";
 
 function App() {
   const money = useSelector((state: RootState) => state.money);

@@ -1,23 +1,40 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "styles/components/CreditsPopUp.module.scss";
-import CreditsPopUp from "./CreditsPopUp";
 
-function creditsPopupComponent() {
-  const [openPopup, setOpenPopup] = useState(false);
-
-  const togglePopUp = () => setOpenPopup(!openPopup);
-
-
-  return (
-    <div>
-      <button className={styles.CreditsButton} onClick={() => togglePopUp()}>
-        i
-      </button>
-      <CreditsPopUp isOpen={openPopup} onClose={togglePopUp}></CreditsPopUp>
-
-      {/* <button className={styles.CreditsButton} onClick={settingsButtonClick}>⚙️</button> */}
-    </div>
-  );
+interface CreditsPopUpProps {
+  isOpen: boolean;
+  onClose: () => void;
 }
 
-export default creditsPopupComponent;
+const CreditsPopUp = (props: CreditsPopUpProps) =>  {
+  const isOpen = props.isOpen;
+  const onClose = props.onClose;
+  
+  if (!isOpen) {
+    return null;
+  } else if (isOpen) {
+    return (
+      <div className={styles.creditsPopUpBackground}>
+        <div className={styles.creditsButtonOverLayMenu}>
+          <div className={styles.TopBar}>
+            <div className={styles.creditsButtonOverLayMenu__header}> credits </div>
+            <button className={styles.closeButton} onClick={() => onClose()}>x</button>
+            
+          </div>
+          <div className={styles.creditsButtonOverLayMenu__body}>
+            <div className={styles.name}>😡😡😡😡😡😡😡😡</div>
+            <div className={styles.name}>Wolfgang Schwendtbauer, BSc.</div>
+            <div className={styles.name}>Alexander Gärtner, BSc.</div>
+            <div className={styles.name}>Johanna Krennhuber, BSc.</div>
+            <div className={styles.name}>Felix Rader, BSc.</div>
+            <div className={styles.name}>😡😡😡😡😡😡😡😡</div>
+          </div>
+        </div>
+        
+      </div>
+    );
+  }
+  return null;
+};
+
+export default CreditsPopUp;
