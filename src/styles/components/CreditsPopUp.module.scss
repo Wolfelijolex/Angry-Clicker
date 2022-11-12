@@ -1,4 +1,4 @@
-.CreditsButton {
+.PopUpButton {
   width: 2.5rem;
   height: 2.5rem;
   text-align: center;
@@ -9,20 +9,21 @@
   border-radius: 0.5rem;
   margin-top: 0.5rem;
   margin-left: 0.5rem;
-  cursor: pointer;
   font-weight: bold;
   transition: all 0.2s ease-in-out;
 }
-.CreditsButton:hover {
+
+.PopUpButton:hover {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
 }
-.CreditsButton:active {
+
+.PopUpButton:active {
   background-color: rgb(220, 220, 220);
   color: rgb(255, 255, 255);
 }
 
-.creditsPopUpBackground {
+.BehindPopUpBackground {
   position: absolute;
   top: 0;
   left: 0;
@@ -37,30 +38,28 @@
   -webkit-backdrop-filter: blur(7px);
   cursor: default;
 }
-.TopBar {
-  position: absolute;
-  display: flex;
-  width: 100%;
-  height: 2rem;
-  background-color: blue;
-}
 
-.creditsButtonOverLayMenu {
+.PopUpButtonOverlayMenu {
+  border-radius: 2rem;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
   display: flex;
   margin: auto;
-
   background-color: whitesmoke;
-  box-shadow: 5rem;
 }
 
-.creditsButtonOverLayMenu__header {
-  justify-content: center;
-  align-items: center;
+.PopUpTopBar {
+  position: absolute;
+  display: flex;
+  text-align: center;
+  width: 100%;
+  height: 2rem;
+}
+
+.PopUpButtonOverlayMenu__header {
+  border-top-left-radius: 2rem;
   background-color: rgb(92, 90, 91);
   color: rgb(255, 255, 255);
   width: 95%;
@@ -69,7 +68,8 @@
   font-weight: bold;
 }
 
-.closeButton {
+.PopUpCloseButton {
+  border-top-right-radius: 2rem;
   width: 15%;
   text-align: center;
   margin: auto;
@@ -78,38 +78,42 @@
   transition: ease-in-out 0.2s;
 
 }
-.closeButton:hover {
+
+.PopUpCloseButton:hover {
   background-color: rgb(255, 64, 121);
   color: rgb(0, 0, 0);
   transition: ease-in-out 0.2s;
 }
-.closeButton:active {
+
+.PopUpCloseButton:active {
   background-color: rgb(122, 37, 54);
   color: rgb(255, 255, 255);
   transition: ease-in-out 0.2s;
 }
+
 .creditsButtonOverLayMenu__body {
-  padding: 2rem;
-  padding-top: 4rem;
+  padding: 4rem 2rem 2rem;
   text-align: center;
-  color:rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
   font-weight: bold;
   margin: auto;
- }
- .name {
+}
+
+.CreditsName {
   margin: auto;
   font-size: 1.5rem;
   transition: ease-in-out 0.2s;
   font-weight: bold;
-  color: rgb(0, 0, 0);
- }
- .name:hover {
-  cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='47' height='56' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>😡</text></svg>") 16 0,auto;
+  color: rgb(26, 26, 26);
+}
+
+.CreditsName:hover {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='47' height='56' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>😡</text></svg>") 16 0, auto;
   color: rgb(125, 20, 52);
   transition: ease-in-out 0.2s;
- }
+}
 
- .name:active {
-  cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='28' height='34' viewport='0 0 100 100' style='fill:black;font-size:17px;'><text y='50%'>😡</text></svg>") 16 0,auto; 
+.CreditsName:active {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='28' height='34' viewport='0 0 100 100' style='fill:black;font-size:17px;'><text y='50%'>😡</text></svg>") 16 0, auto;
   transition: ease-in-out 0.2s;
 }

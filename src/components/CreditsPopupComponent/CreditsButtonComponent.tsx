@@ -7,10 +7,9 @@ function CreditsButtonComponent() {
 
   const togglePopUp = () => setOpenPopup(!openPopup);
 
-
   return (
     <div>
-      <button className={styles.CreditsButton} onClick={() => togglePopUp()}>
+      <button className={styles.PopUpButton} onClick={() => togglePopUp()}>
         i
       </button>
       <CreditsPopUpComponent isOpen={openPopup} onClose={togglePopUp}></CreditsPopUpComponent>
