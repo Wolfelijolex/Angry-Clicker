@@ -10,6 +10,7 @@
   margin-top: 0.5rem;
   margin-left: 0.5rem;
   cursor: pointer;
+  font-weight: bold;
   transition: all 0.2s ease-in-out;
 }
 .CreditsButton:hover {
@@ -20,6 +21,16 @@
   background-color: rgb(220, 220, 220);
   color: rgb(255, 255, 255);
 }
+
+.creditsPopUp {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vh;
+  height: 100vh;
+  background-color: rgb(201, 26, 26);
+  z-index: 100;
+};
 
 
 
