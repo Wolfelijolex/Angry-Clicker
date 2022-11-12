@@ -14,8 +14,8 @@ const CreditsPopUp = (props: CreditsPopUpProps) =>  {
     return null;
   } else if (isOpen) {
     return (
-      <div className={styles.creditsPopUpBackground} onClick={() => onClose()}>
-        <div className={styles.creditsButtonOverLayMenu} onClick={() => isOpen}> {/* Sorry des is schwindlig*/}
+      <div className={styles.creditsPopUpBackground}>
+        <div className={styles.creditsButtonOverLayMenu}>
           <div className={styles.TopBar}>
             <div className={styles.creditsButtonOverLayMenu__header}> credits </div>
             <button className={styles.closeButton} onClick={() => onClose()}>x</button>
