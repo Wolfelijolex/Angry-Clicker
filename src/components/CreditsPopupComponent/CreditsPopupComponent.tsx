@@ -5,12 +5,15 @@ import CreditsPopUp from "./CreditsPopUp";
 function creditsPopupComponent() {
   const [openPopup, setOpenPopup] = useState(false);
 
+  const togglePopUp = () => setOpenPopup(!openPopup);
+
+
   return (
     <div>
-      <button className={styles.CreditsButton} onClick={() => setOpenPopup(true)}>
+      <button className={styles.CreditsButton} onClick={() => togglePopUp()}>
         i
       </button>
-      <CreditsPopUp isOpen={openPopup}></CreditsPopUp>
+      <CreditsPopUp isOpen={openPopup} onClose={togglePopUp}></CreditsPopUp>
 
       {/* <button className={styles.CreditsButton} onClick={settingsButtonClick}>⚙️</button> */}
     </div>
