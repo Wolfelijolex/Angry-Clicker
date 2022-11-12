@@ -4,6 +4,7 @@ import CreditsPopUpComponent from "./CreditsPopUpComponent";
 
 function CreditsButtonComponent() {
   const [openPopup, setOpenPopup] = useState(false);
+  const [isCredits, setIsCredits] = useState(true);
 
   const togglePopUp = () => setOpenPopup(!openPopup);
 
@@ -12,7 +13,12 @@ function CreditsButtonComponent() {
       <button className={styles.PopUpButton} onClick={() => togglePopUp()}>
         i
       </button>
-      <CreditsPopUpComponent isOpen={openPopup} onClose={togglePopUp}></CreditsPopUpComponent>
+      <CreditsPopUpComponent isCredits= {isCredits} isOpen={openPopup} onClose={togglePopUp}></CreditsPopUpComponent>
+      
+      <button className={styles.PopUpButton} onClick={() => togglePopUp()}>
+        ⚙️
+      </button>
+      <CreditsPopUpComponent isCredits={isCredits} isOpen={openPopup} onClose={togglePopUp}></CreditsPopUpComponent>
     </div>
   );
 }
