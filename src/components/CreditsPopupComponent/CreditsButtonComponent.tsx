@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "styles/components/CreditsPopUp.module.scss";
-import CreditsPopUpComponent from "./CreditsPopUpComponent";
+import CreditsPopUpComponent from "./CreditsPopupComponent";
 import SettingsButtonComponent from "./SettingsButtonComponent";
 
 function CreditsButtonComponent() {
