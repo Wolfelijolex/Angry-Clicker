@@ -7,6 +7,8 @@ type MyComponentProps = {
   text: string;
 };
 
+//UWU
+
 function MyComponent(props: MyComponentProps) {
   const money = useSelector((state: RootState) => state.money);
 
