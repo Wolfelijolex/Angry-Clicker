@@ -8,7 +8,12 @@ type AmountSelectorProps = {
   className?: string;
 };
 
-export default function AmountSelector({ amount, setAmount, values = [1, 10, 100], className }: AmountSelectorProps) {
+export default function AmountSelector({
+  amount,
+  setAmount,
+  values = [1, 10, 100, -1],
+  className,
+}: AmountSelectorProps) {
   return (
     <div className={`flex justify-around ${className}`}>
       {values.map((value) => {
@@ -20,7 +25,7 @@ export default function AmountSelector({ amount, setAmount, values = [1, 10, 100
             onClick={() => setAmount(value)}
             key={`selection-${value}`}
           >
-            {value}x
+            {value === -1 ? "ALL" : value + "x"}
           </button>
         );
       })}

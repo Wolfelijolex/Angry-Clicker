@@ -57,7 +57,13 @@ function StockMarket(props: StockMarketProps) {
   };
 
   const handleCoinBuy = () => {
-    if (money >= stockPrice * buyAmount) {
+    if (money >= stockPrice * buyAmount || money >= stockPrice * buyAmount * -1) {
+      if (buyAmount === -1) {
+        const allBuy = Math.floor(money / stockPrice);
+        dispatch(moneySlice.actions.subtract(stockPrice * allBuy));
+        dispatch(angryCoinSlice.actions.add(allBuy));
+        return;
+      }
       dispatch(moneySlice.actions.subtract(stockPrice * buyAmount));
       dispatch(angryCoinSlice.actions.add(buyAmount));
     }
@@ -87,7 +93,9 @@ function StockMarket(props: StockMarketProps) {
         </div>
         <div className={`${styles.StockMarket__stockPrice}`}>
           <p>value: </p>
-          <p data-testid="stockmarket-price" className={"w-7"}>{stockPrice}</p>
+          <p data-testid="stockmarket-price" className={"w-7"}>
+            {stockPrice}
+          </p>
         </div>
         <div className={`${styles.StockMarket__stockOwned}`}>
           <p>owned: </p>

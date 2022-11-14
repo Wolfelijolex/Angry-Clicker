@@ -22,7 +22,6 @@ function getPrice(price: number, owned: number, buyAmount: number): number {
 export default function ShopComponent() {
   const appState = useSelector((state: RootState) => state);
   const [buyAmount, setBuyAmount] = useState(1);
-
   return (
     <div data-testid="shop" className="mx-6">
       <div className="w-100 text-center mb-3 text-2xl font-bold">Angry Shop</div>
@@ -33,7 +32,7 @@ export default function ShopComponent() {
           <SingleItem
             id={upgrade.id}
             name={upgrade.name}
-            price={getPrice(upgrade.basePrice, appState.upgrades[upgrade.id], buyAmount)}
+            price={getPrice(upgrade.basePrice, appState.upgrades[upgrade.id], buyAmount===-1 ? 1 : buyAmount)}
             amount={buyAmount}
             owned={appState.upgrades[upgrade.id]}
             key={upgrade.id}
@@ -46,7 +45,7 @@ export default function ShopComponent() {
           <SingleItem
             id={clicker.id}
             name={clicker.name}
-            price={getPrice(clicker.basePrice, appState.autoClickers[clicker.id], buyAmount)}
+            price={getPrice(clicker.basePrice, appState.autoClickers[clicker.id],  buyAmount===-1 ? 1 : buyAmount)}
             amount={buyAmount}
             owned={appState.autoClickers[clicker.id]}
             key={clicker.id}
