@@ -7,6 +7,22 @@
   pointer-events: none;
 }
 
+.App_button {
+  margin: 2.5rem 0;
+  transition: 20ms all ease-in;
+  filter: invert(0);
+
+  &:active {
+    transform: scale(1.1);
+    // filter: invert(1);
+    filter: invert(1);
+  }
+}
+
+.paragraph {
+  margin-bottom: 2.5rem;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App_logo {
     animation: App-logo-spin infinite 20s linear;
@@ -51,27 +67,5 @@
   }
   &__Right {
     grid-area: right;
-  }
-
-  &::after {
-    position: absolute;
-    bottom: 5%;
-    right: 5%;
-    width: 15rem;
-    height: 12.5rem;
-    background-color: black;
-    content: "Test";
-    color: white;
-    opacity: 0;
-    animation: popup 0.5s 5s ease forwards;
-  }
-}
-
-@keyframes popup {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }

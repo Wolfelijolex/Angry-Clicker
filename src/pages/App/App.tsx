@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-import logo from "../../assets/angryScaled.png";
 import styles from "../../styles/pages/App.module.scss";
-import MyComponent from "../../components/MyComponent/MyComponent";
+import AngryButton from "../../components/AngryButton/AngryButtonComponent";
 import ShopComponent from "components/ShopComponent/ShopComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
@@ -11,8 +10,6 @@ import { autoClickers } from "app/autoClickers";
 import Tarot from "components/Tarot/Tarot";
 
 function App() {
-  const money = useSelector((state: RootState) => state.money);
-  const multiplier = useSelector((state: RootState) => state.upgrades.clickMultiplier);
   const autoClickersState = useSelector((state: RootState) => state.autoClickers);
   const dispatch = useDispatch();
 
@@ -29,53 +26,37 @@ function App() {
     return () => clearInterval(interval);
   }, [autoClickersState]);
 
-  const infiniteClicker = () => {
-    let setMoney = 0;
-    if (money === 0) {
-      setMoney = Number.MAX_SAFE_INTEGER;
-    }
-
-    dispatch(moneySlice.actions.set(setMoney));
-  };
-
   return (
-    <div className={styles.LayoutGrid}>
-      {/* LEFT COLUMN */}
-      <div className={`flex flex-col bg-red-300 h-screen ${styles.LayoutGrid__Left}`}>
-        <StockMarket title="ANGRY Coin"></StockMarket>
-        <Tarot title={"TAR0T"}></Tarot>
-      </div>
-
-      {/* MIDDLE COLUMN */}
-      <div className={`border-slate-300 border-solid border-x-2  h-screen ${styles.LayoutGrid__Mid}`}>
-        <div className={styles.App}>
-          <header className={styles.App_header}>
-            <img src={logo} className={styles.App_logo} alt="logo" />
-            <p className="text-3xl font-bold">Become angry</p>
-            <a
-              className={styles.App_link}
-              href="https://discord.gg/2hzaK9zPxx"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Join the angry!
-            </a>
-            <MyComponent title="Title of MyComponent" text="Text of MyComponent"></MyComponent>
-            <button
-              data-testid="manual-clicker"
-              className="text-amber-400 font-sans"
-              onClick={() => dispatch(moneySlice.actions.add(1 * multiplier))}
-            >
-              Click me to get Money! you have {money} coins
-            </button>
-            <button data-testid="infinite-clicker" hidden={true} onClick={() => infiniteClicker()}></button>
-          </header>
+    <div className={styles.Popup}>
+      <div className={styles.LayoutGrid}>
+        {/* LEFT COLUMN */}
+        <div className={`flex flex-col bg-red-300 h-screen ${styles.LayoutGrid__Left}`}>
+          <StockMarket title="ANGRY Coin"></StockMarket>
+          <Tarot title={"TAR0T"}></Tarot>
         </div>
-      </div>
 
-      {/* RIGHT COLUMN */}
-      <div  className={`h-screen ${styles.LayoutGrid__Right}`}>
-        <ShopComponent />
+        {/* MIDDLE COLUMN */}
+        <div className={`border-slate-300 border-solid border-x-2  h-screen ${styles.LayoutGrid__Mid}`}>
+          <div className={styles.App}>
+            <header className={styles.App_header}>
+              <AngryButton title="Click the Angry!!! 😡"></AngryButton>
+              <p className="text-3xl font-bold">Become angry</p>
+              <a
+                className={styles.App_link}
+                href="https://discord.gg/2hzaK9zPxx"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Join the angry!
+              </a>
+            </header>
+          </div>
+        </div>
+
+        {/* RIGHT COLUMN */}
+        <div className={`h-screen ${styles.LayoutGrid__Right}`}>
+          <ShopComponent />
+        </div>
       </div>
     </div>
   );
