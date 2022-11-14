@@ -11,10 +11,13 @@ import { autoClickers } from "app/autoClickers";
 import Tarot from "components/Tarot/Tarot";
 
 function App() {
-  const money = useSelector((state: RootState) => state.money);
-  const multiplier = useSelector((state: RootState) => state.upgrades.clickMultiplier);
-  const autoClickersState = useSelector((state: RootState) => state.autoClickers);
+  const rootState = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
+  const {
+    money,
+    upgrades: { clickMultiplier: multiplier },
+    autoClickers: autoClickersState,
+  } = rootState;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -28,6 +31,10 @@ function App() {
 
     return () => clearInterval(interval);
   }, [autoClickersState]);
+
+  useEffect(() => {
+    localStorage.setItem("save", JSON.stringify(rootState));
+  }, [rootState]);
 
   const infiniteClicker = () => {
     let setMoney = 0;
@@ -74,7 +81,7 @@ function App() {
       </div>
 
       {/* RIGHT COLUMN */}
-      <div  className={`h-screen ${styles.LayoutGrid__Right}`}>
+      <div className={`h-screen ${styles.LayoutGrid__Right}`}>
         <ShopComponent />
       </div>
     </div>
