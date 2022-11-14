@@ -15,7 +15,6 @@ function getPrice(price: number, owned: number, buyAmount: number): number {
   for (let i = 0; i < buyAmount; i++) {
     nextPrice += getSingleItemPrice(price, owned + i);
   }
-
   return nextPrice;
 }
 
@@ -33,7 +32,7 @@ export default function ShopComponent() {
             id={upgrade.id}
             name={upgrade.name}
             price={getPrice(upgrade.basePrice, appState.upgrades[upgrade.id], buyAmount===-1 ? 1 : buyAmount)}
-            amount={buyAmount}
+            amount={buyAmount===-1 ? 1 : buyAmount}
             owned={appState.upgrades[upgrade.id]}
             key={upgrade.id}
           />
@@ -46,7 +45,7 @@ export default function ShopComponent() {
             id={clicker.id}
             name={clicker.name}
             price={getPrice(clicker.basePrice, appState.autoClickers[clicker.id],  buyAmount===-1 ? 1 : buyAmount)}
-            amount={buyAmount}
+            amount={buyAmount===-1 ? 1 : buyAmount}
             owned={appState.autoClickers[clicker.id]}
             key={clicker.id}
           />

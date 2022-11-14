@@ -55,11 +55,13 @@ function StockMarket(props: StockMarketProps) {
     }
     setStockClasses(stockClassesRef.current);
   };
-
+  const getAllAmount = () => {
+    return Math.floor(money / stockPrice);
+  };
   const handleCoinBuy = () => {
     if (money >= stockPrice * buyAmount || money >= stockPrice * buyAmount * -1) {
       if (buyAmount === -1) {
-        const allBuy = Math.floor(money / stockPrice);
+        const allBuy = getAllAmount();
         dispatch(moneySlice.actions.subtract(stockPrice * allBuy));
         dispatch(angryCoinSlice.actions.add(allBuy));
         return;
@@ -107,7 +109,7 @@ function StockMarket(props: StockMarketProps) {
         <div className={`${styles.StockMarket__buttons}`}>
           <button
             data-testid="stockmarket-buy"
-            disabled={buyAmount * stockPrice > money || buyAmount == 0}
+            disabled={buyAmount * stockPrice > money || buyAmount == 0 || getAllAmount() == 0}
             className={`${styles.StockMarket__buttons__buy}`}
             onClick={handleCoinBuy}
           >
@@ -115,7 +117,7 @@ function StockMarket(props: StockMarketProps) {
           </button>
           <button
             data-testid="stockmarket-sell"
-            disabled={coins == 0 || buyAmount == 0}
+            disabled={coins == 0 || buyAmount == 0 || getAllAmount() == 0}
             className={`${styles.StockMarket__buttons__sell}`}
             onClick={handleCoinSell}
           >
