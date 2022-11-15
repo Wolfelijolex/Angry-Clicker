@@ -13,19 +13,24 @@ type GambleComponent = {
 
 function GambleComponent() {
   const money = useSelector((state: RootState) => state.money);
-  let message = "";
   const dispatch = useDispatch();
+  const [winState, setWinState] = useState("");
+
+  const toggleWinState = () => {
+    setWinState(winState);
+  };
 
   const gambleMoney = () => {
     if (money > 0) {
       if (Math.floor(Math.random() * 2)) {
-        message = "won";
-
+        setWinState("won");
         dispatch(moneySlice.actions.add(money));
       } else {
-        message = "lost";
+        setWinState("lost");
         dispatch(moneySlice.actions.set(0));
       }
+    } else {
+      setWinState("noMoney");
     }
   };
 
@@ -33,7 +38,7 @@ function GambleComponent() {
     <div className={styles.GambleWrapper} onClick={() => gambleMoney()}>
       <div className={styles.GambleWrapper__Title}>gamble</div>
       <div className={styles.AllInButton}>ALL IN</div>
-      <GambleWinStateComponent win="NotEnoughMoney"></GambleWinStateComponent>
+      <GambleWinStateComponent win={winState}></GambleWinStateComponent>
     </div>
   );
 }
