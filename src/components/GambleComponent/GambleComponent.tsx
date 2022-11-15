@@ -18,11 +18,11 @@ function GambleComponent() {
   const gambleMoney = () => {
     if (money > 0) {
       if (Math.floor(Math.random() * 2)) {
-        message="You won";
+        message = "You won";
         console.log(message);
         dispatch(moneySlice.actions.add(money));
       } else {
-        message="You lost";
+        message = "You lost";
         console.log(message);
         dispatch(moneySlice.actions.set(0));
       }
@@ -32,8 +32,12 @@ function GambleComponent() {
   };
 
   return (
-    <div className={styles.GambleFriend} onClick={() => gambleMoney()}>
-      <h1>{money}{message}</h1>
+    <div className={styles.GambleWrapper} onClick={() => gambleMoney()}>
+      <div className={styles.GambleWrapper__Title}>all in - gamble</div>
+      <h1>
+        {money}
+        {message}
+      </h1>
     </div>
   );
 }

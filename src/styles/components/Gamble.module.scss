@@ -1,16 +1,28 @@
-.GambleFriend{
-    background-color: greenyellow;
-    color: rgb(0, 0, 0);
-    height: auto;
+.GambleWrapper{
     width: auto;
-    user-select: none; 
+    height: 15%;
+    @apply bg-rose-100;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    &__Title {
+      @apply text-red-900 font-bold text-2xl;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: center;
+    }
+    &__Wrapper {
+      height: 100%;
+      position: relative;
+  
+    }
 }
-.GambleFriend:hover{
+.GambleWrapper:hover{
     background-color: green;
     color: yellow;
     cursor: pointer;
 }
-.GambleFriend:active{
+.GambleWrapper:active{
     background-color: rgb(83, 175, 103);
     color: rgb(206, 64, 166);
     cursor: pointer;
