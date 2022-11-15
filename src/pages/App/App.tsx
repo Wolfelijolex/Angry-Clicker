@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "../../styles/pages/App.module.scss";
 import AngryButton from "../../components/AngryButton/AngryButtonComponent";
+import PopUp from "../../components/PopUpComponent/PopUpComponent";
 import ShopComponent from "components/ShopComponent/ShopComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
@@ -27,7 +28,8 @@ function App() {
   }, [autoClickersState]);
 
   return (
-    <div className={styles.Popup}>
+    <div>
+      <PopUp title="Become Angry!!!"></PopUp>
       <div className={styles.LayoutGrid}>
         {/* LEFT COLUMN */}
         <div className={`flex flex-col bg-red-300 h-screen ${styles.LayoutGrid__Left}`}>
@@ -40,15 +42,6 @@ function App() {
           <div className={styles.App}>
             <header className={styles.App_header}>
               <AngryButton title="Click the Angry!!! 😡"></AngryButton>
-              <p className="text-3xl font-bold">Become angry</p>
-              <a
-                className={styles.App_link}
-                href="https://discord.gg/2hzaK9zPxx"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Join the angry!
-              </a>
             </header>
           </div>
         </div>

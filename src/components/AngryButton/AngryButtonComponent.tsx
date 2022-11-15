@@ -34,7 +34,7 @@ function AngryButton(props: AngryButtonProps) {
         className={betterStyle.App_button}
         onClick={() => dispatch(moneySlice.actions.add(1 * multiplier))}
       >
-        <img src={logo} className={betterStyle.App_logo} alt="logo"/>
+        <img src={logo} className={betterStyle.App_logo} alt="logo" />
       </button>
       <button data-testid="infinite-clicker" hidden={true} onClick={() => infiniteClicker()}></button>
       <p className={betterStyle.paragraph}>You have {money} 😡coins</p>

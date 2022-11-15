@@ -1,10 +1,46 @@
-.App {
-  text-align: center;
+.container {
+  display: flex;
+  flex-direction: column;
 }
 
-.App_logo {
-  height: 40vmin;
-  pointer-events: none;
+.App_button {
+display: block;
+}
+
+.popUpAd {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1rem;
+  background-color: rgba($color: #0b0f18e6, $alpha: 0.9);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  z-index: 9999;
+  animation: popUp 2s 1 60s forwards;
+  transform: translateY(200%);
+}
+
+@keyframes popUp {
+  from {
+    transform: translateY(200%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.title {
+  font-size: calc(10px + 2vmin);
+  font-weight: 1000;
+  color: red;
+}
+
+.paragraph {
+  margin-bottom: 2.5rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -23,6 +59,7 @@
 }
 
 .App_link {
+  margin: 0.5rem 0;
   color: #61dafb;
 }
 
