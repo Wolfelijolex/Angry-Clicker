@@ -1,0 +1,17 @@
+.GambleFriend{
+    background-color: greenyellow;
+    color: rgb(0, 0, 0);
+    height: auto;
+    width: auto;
+    user-select: none; 
+}
+.GambleFriend:hover{
+    background-color: green;
+    color: yellow;
+    cursor: pointer;
+}
+.GambleFriend:active{
+    background-color: rgb(83, 175, 103);
+    color: rgb(206, 64, 166);
+    cursor: pointer;
+}

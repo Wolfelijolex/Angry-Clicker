@@ -10,6 +10,7 @@ import StockMarket from "../../components/StockMarket/StockMarket";
 import { autoClickers } from "app/autoClickers";
 import Tarot from "components/Tarot/Tarot";
 import CreditsPopupComponent from "components/CreditsPopupComponent/CreditsButtonComponent";
+import GambleComponent from "components/GambleComponent/GambleComponent";
 
 function App() {
   const money = useSelector((state: RootState) => state.money);
@@ -45,12 +46,14 @@ function App() {
 
       <div className={`flex flex-col bg-red-300 h-screen ${styles.LayoutGrid__Left}`}>
         <StockMarket title="ANGRY Coin"></StockMarket>
+        <GambleComponent></GambleComponent>
         <Tarot title={"TAR0T"}></Tarot>
       </div>
 
       {/* MIDDLE COLUMN */}
       <div className={`border-slate-300 border-solid border-x-2  h-screen ${styles.LayoutGrid__Mid}`}>
         <CreditsPopupComponent></CreditsPopupComponent>
+
         <div className={styles.App}>
           <header className={styles.App_header}>
             <img src={logo} className={styles.App_logo} alt="logo" />
