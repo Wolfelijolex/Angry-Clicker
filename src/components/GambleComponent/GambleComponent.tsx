@@ -33,11 +33,8 @@ function GambleComponent() {
 
   return (
     <div className={styles.GambleWrapper} onClick={() => gambleMoney()}>
-      <div className={styles.GambleWrapper__Title}>all in - gamble</div>
-      <h1>
-        {money}
-        {message}
-      </h1>
+      <div className={styles.GambleWrapper__Title}>gamble</div>
+      <div className={styles.AllInButton}>ALL IN</div>
     </div>
   );
 }

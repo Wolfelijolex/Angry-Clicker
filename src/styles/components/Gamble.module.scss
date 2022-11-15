@@ -16,14 +16,27 @@
       position: relative;
   
     }
+    &__Won{
+        @apply bg-green-400;
+    }
 }
+
 .GambleWrapper:hover{
-    background-color: green;
-    color: yellow;
-    cursor: pointer;
+    @apply bg-emerald-200;
+
 }
 .GambleWrapper:active{
-    background-color: rgb(83, 175, 103);
-    color: rgb(206, 64, 166);
-    cursor: pointer;
+    @apply bg-emerald-300;
+}
+
+.AllInButton {
+    @apply bg-blue-400;
+    display: flex;
+    // center button
+    justify-content: center;
+    align-items: center;
+    // center vertically
+    height: 25%;
+    width: 100%;
+    border-radius: 10px;
 }
