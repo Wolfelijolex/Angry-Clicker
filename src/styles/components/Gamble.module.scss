@@ -30,13 +30,55 @@
 }
 
 .AllInButton {
-    @apply bg-blue-400;
+    color:black;
+    font-size: larger;
+    font-weight: bold;
     display: flex;
-    // center button
     justify-content: center;
     align-items: center;
-    // center vertically
     height: 25%;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.WinButton {
+    @apply bg-green-400;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
+    width: 100%;
+    border-radius: 10px;
+}
+.LoseButton {
+    @apply bg-red-400;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
+    width: 100%;
+    border-radius: 10px;
+}
+.NotEnoughMoneyButton {
+    @apply bg-red-300;
+    color: black;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
+    width: 100%;
+    border-radius: 10px;
+}
+.GambleAdvertisment {
+    @apply bg-blue-400;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
     width: 100%;
     border-radius: 10px;
 }
