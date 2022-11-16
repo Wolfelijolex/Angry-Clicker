@@ -5,10 +5,18 @@ type AmountSelectorProps = {
   amount: number;
   setAmount: (amount: number) => void;
   values?: number[];
+  hasAll?: boolean;
   className?: string;
 };
 
-export default function AmountSelector({ amount, setAmount, values = [1, 10, 100], className }: AmountSelectorProps) {
+export default function AmountSelector({
+  amount,
+  setAmount,
+  values = [1, 10, 100],
+  hasAll = false,
+  className,
+}: AmountSelectorProps) {
+  values = hasAll ? [...values, -1] : values;
   return (
     <div className={`flex justify-around ${className}`}>
       {values.map((value) => {
@@ -20,7 +28,7 @@ export default function AmountSelector({ amount, setAmount, values = [1, 10, 100
             onClick={() => setAmount(value)}
             key={`selection-${value}`}
           >
-            {value}x
+            {value === -1 ? "ALL" : value + "x"}
           </button>
         );
       })}

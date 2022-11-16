@@ -55,9 +55,17 @@ function StockMarket(props: StockMarketProps) {
     }
     setStockClasses(stockClassesRef.current);
   };
-
+  const getAllAmount = () => {
+    return Math.floor(money / stockPrice);
+  };
   const handleCoinBuy = () => {
-    if (money >= stockPrice * buyAmount) {
+    if (money >= stockPrice * buyAmount || money >= stockPrice * buyAmount * -1) {
+      if (buyAmount === -1) {
+        const allBuy = getAllAmount();
+        dispatch(moneySlice.actions.subtract(stockPrice * allBuy));
+        dispatch(angryCoinSlice.actions.add(allBuy));
+        return;
+      }
       dispatch(moneySlice.actions.subtract(stockPrice * buyAmount));
       dispatch(angryCoinSlice.actions.add(buyAmount));
     }
@@ -87,19 +95,21 @@ function StockMarket(props: StockMarketProps) {
         </div>
         <div className={`${styles.StockMarket__stockPrice}`}>
           <p>value: </p>
-          <p data-testid="stockmarket-price" className={"w-7"}>{stockPrice}</p>
+          <p data-testid="stockmarket-price" className={"w-7"}>
+            {stockPrice}
+          </p>
         </div>
         <div className={`${styles.StockMarket__stockOwned}`}>
           <p>owned: </p>
           <p className={"w-7"}>{coins}</p>
         </div>
         {/* Stockmarket interface */}
-        <AmountSelector amount={buyAmount} setAmount={setBuyAmount} className={`${styles.StockMarket__amount}`} />
+        <AmountSelector amount={buyAmount} setAmount={setBuyAmount} hasAll={true} className={`${styles.StockMarket__amount}`} />
         {/* Stockmarket button flex */}
         <div className={`${styles.StockMarket__buttons}`}>
           <button
             data-testid="stockmarket-buy"
-            disabled={buyAmount * stockPrice > money || buyAmount == 0}
+            disabled={buyAmount * stockPrice > money || buyAmount == 0 || getAllAmount() == 0}
             className={`${styles.StockMarket__buttons__buy}`}
             onClick={handleCoinBuy}
           >
@@ -107,7 +117,7 @@ function StockMarket(props: StockMarketProps) {
           </button>
           <button
             data-testid="stockmarket-sell"
-            disabled={coins == 0 || buyAmount == 0}
+            disabled={coins == 0 || buyAmount == 0 || getAllAmount() == 0}
             className={`${styles.StockMarket__buttons__sell}`}
             onClick={handleCoinSell}
           >
