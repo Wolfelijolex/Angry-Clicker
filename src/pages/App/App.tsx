@@ -13,10 +13,13 @@ import CreditsPopupComponent from "components/CreditsPopupComponent/CreditsButto
 import GambleComponent from "components/GambleComponent/GambleComponent";
 
 function App() {
-  const money = useSelector((state: RootState) => state.money);
-  const multiplier = useSelector((state: RootState) => state.upgrades.clickMultiplier);
-  const autoClickersState = useSelector((state: RootState) => state.autoClickers);
+  const rootState = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
+  const {
+    money,
+    upgrades: { clickMultiplier: multiplier },
+    autoClickers: autoClickersState,
+  } = rootState;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -30,6 +33,10 @@ function App() {
 
     return () => clearInterval(interval);
   }, [autoClickersState]);
+
+  useEffect(() => {
+    localStorage.setItem("save", JSON.stringify(rootState));
+  }, [rootState]);
 
   const infiniteClicker = () => {
     let setMoney = 0;
