@@ -11,8 +11,11 @@ import { autoClickers } from "app/autoClickers";
 import Tarot from "components/Tarot/Tarot";
 
 function App() {
-  const autoClickersState = useSelector((state: RootState) => state.autoClickers);
+  const rootState = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
+  const {
+    money,  upgrades: { clickMultiplier: multiplier },  autoClickers: autoClickersState,
+  } = rootState;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -27,6 +30,13 @@ function App() {
     return () => clearInterval(interval);
   }, [autoClickersState]);
 
+
+  useEffect(() => {
+    localStorage.setItem("save", JSON.stringify(rootState));
+  }, [rootState]);
+
+
+
   return (
     <div>
       <PopUp title="Become Angry!!!"></PopUp>
@@ -36,7 +46,6 @@ function App() {
           <StockMarket title="ANGRY Coin"></StockMarket>
           <Tarot title={"TAR0T"}></Tarot>
         </div>
-
         {/* MIDDLE COLUMN */}
         <div className={`border-slate-300 border-solid border-x-2  h-screen ${styles.LayoutGrid__Mid}`}>
           <div className={styles.App}>
