@@ -32,9 +32,9 @@ function StockMarket(props: StockMarketProps) {
   useEffect(() => {
     const interval = setInterval(() => {
       if (Math.floor(Math.random() * 2) && priceRef.current > 20) {
-        priceRef.current = priceRef.current - Math.floor(Math.random() * 20);
+        priceRef.current = priceRef.current - Math.floor(Math.random() * 20 - 1);
       } else {
-        priceRef.current = priceRef.current + Math.floor(Math.random() * 20);
+        priceRef.current = priceRef.current + Math.floor(Math.random() * 20 + 1);
         if (priceRef.current > 200) {
           priceRef.current = 200;
         }
@@ -87,7 +87,9 @@ function StockMarket(props: StockMarketProps) {
         </div>
         <div className={`${styles.StockMarket__stockPrice}`}>
           <p>value: </p>
-          <p data-testid="stockmarket-price" className={"w-7"}>{stockPrice}</p>
+          <p data-testid="stockmarket-price" className={"w-7"}>
+            {stockPrice}
+          </p>
         </div>
         <div className={`${styles.StockMarket__stockOwned}`}>
           <p>owned: </p>
