@@ -104,7 +104,7 @@ function StockMarket(props: StockMarketProps) {
           <p className={"w-7"}>{coins}</p>
         </div>
         {/* Stockmarket interface */}
-        <AmountSelector amount={buyAmount} setAmount={setBuyAmount} className={`${styles.StockMarket__amount}`} />
+        <AmountSelector amount={buyAmount} setAmount={setBuyAmount} hasAll={true} className={`${styles.StockMarket__amount}`} />
         {/* Stockmarket button flex */}
         <div className={`${styles.StockMarket__buttons}`}>
           <button
