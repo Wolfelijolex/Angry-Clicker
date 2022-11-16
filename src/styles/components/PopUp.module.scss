@@ -1,13 +1,13 @@
-.container {
+.PopUpComponent_container {
   display: flex;
   flex-direction: column;
 }
 
-.App_button {
+.PopUpComponent_button {
 display: block;
 }
 
-.popUpAd {
+.PopUpComponent_popUpAd {
   display: flex;
   flex-direction: row-reverse;
   align-items: flex-start;
@@ -33,60 +33,13 @@ display: block;
   }
 }
 
-.title {
+.PopUpComponent_title {
   font-size: calc(10px + 2vmin);
   font-weight: 1000;
   color: red;
 }
 
-.paragraph {
-  margin-bottom: 2.5rem;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App_logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App_header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-}
-
-.App_link {
+.PopUpComponent_link {
   margin: 0.5rem 0;
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.LayoutGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas: "left middle right";
-  @media screen and (max-width: 768px) {
-    grid-template-columns: 1fr;
-    grid-template-areas: "middle" "left" "right";
-  }
-  &__Left {
-    grid-area: left;
-  }
-  &__Mid {
-    grid-area: middle;
-  }
-  &__Right {
-    grid-area: right;
-  }
 }
