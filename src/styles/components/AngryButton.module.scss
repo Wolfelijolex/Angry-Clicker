@@ -1,13 +1,9 @@
-.App {
-  text-align: center;
-}
-
-.App_logo {
+.AngryButton_logo {
   height: 40vmin;
   pointer-events: none;
 }
 
-.App_button {
+.AngryButton_button {
   margin: 2.5rem 0;
   transition: 20ms all ease-in;
   filter: invert(0);
@@ -19,27 +15,14 @@
   }
 }
 
-.paragraph {
+.AngryButton_paragraph {
   margin-bottom: 2.5rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App_logo {
+  .AngryButton_logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
-
-.App_header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-}
-
-.App_link {
-  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
@@ -48,24 +31,5 @@
   }
   to {
     transform: rotate(360deg);
-  }
-}
-
-.LayoutGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas: "left middle right";
-  @media screen and (max-width: 768px) {
-    grid-template-columns: 1fr;
-    grid-template-areas: "middle" "left" "right";
-  }
-  &__Left {
-    grid-area: left;
-  }
-  &__Mid {
-    grid-area: middle;
-  }
-  &__Right {
-    grid-area: right;
   }
 }
