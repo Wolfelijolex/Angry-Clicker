@@ -1,21 +1,21 @@
 /// <reference types="cypress" />
 
-describe("Main App", () => {
+describe("AngryButtonComponent", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000");
   });
 
-  it("should display the title", () => {
-    cy.contains("Become angry");
+  it("should display the Angry button", () => {
+    cy.contains("Click the Angry");
   });
 
   it("should display the counter", () => {
-    cy.contains("0 angry");
+    cy.contains("You have 0 😡coins");
   });
 
   it("should increment the counter", () => {
     cy.get('[data-testid="manual-clicker"]').click();
-    cy.contains("1 angry");
+    cy.contains("You have 1 😡coins");
   });
 
   it("should increment the counter if an autoclicker was bought", () => {
@@ -23,9 +23,9 @@ describe("Main App", () => {
     cy.get('[data-testid="shop-item-angryBird"]').click();
     cy.get('[data-testid="infinite-clicker"]').click({ force: true });
 
-    cy.contains("0 angry");
+    cy.contains("You have 0 😡coins");
     cy.wait(1500);
-    cy.contains("1 angry");
+    cy.contains("You have 1 😡coins");
   });
 });
 
