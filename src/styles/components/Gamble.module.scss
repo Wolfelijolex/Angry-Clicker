@@ -1,0 +1,96 @@
+.GambleWrapper {
+  width: auto;
+  height: 15%;
+  @apply bg-rose-100;
+  margin: 10px;
+  padding: 15px;
+  border-radius: 10px;
+  &__Title {
+    @apply text-red-900 font-bold text-2xl;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+  }
+  &__Wrapper {
+    height: 100%;
+    position: relative;
+  }
+  &__Won {
+    @apply bg-green-400;
+  }
+  user-select: none;
+}
+
+.GambleWrapper:hover {
+  @apply bg-emerald-200;
+}
+.GambleWrapper:active {
+  @apply bg-emerald-300;
+}
+
+.AllInButton {
+  color: black;
+  font-size: larger;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25%;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.WinButton {
+  @apply bg-green-400;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40%;
+  width: 100%;
+  border-radius: 10px;
+}
+.LoseButton {
+  @apply bg-red-400;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40%;
+  width: 100%;
+  border-radius: 10px;
+}
+.NotEnoughMoneyButton {
+  @apply bg-red-300;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40%;
+  width: 100%;
+  border-radius: 10px;
+
+  // create animation that hides the button after 5 seconds if not clicked
+  animation: hide 6s;
+  animation-fill-mode: forwards;
+  @keyframes hide {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
+
+.GambleAdvertisment {
+  @apply bg-blue-400;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40%;
+  width: 100%;
+  border-radius: 10px;
+}
