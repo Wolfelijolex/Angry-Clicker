@@ -6,7 +6,7 @@ interface CreditsPopUpProps {
   onClose: () => void;
 }
 
-const CreditsPopUpComponent = (props: CreditsPopUpProps) => {
+const InfoMenu = (props: CreditsPopUpProps) => {
   const isOpen = props.isOpen;
   const onClose = props.onClose;
 
@@ -37,5 +37,5 @@ const CreditsPopUpComponent = (props: CreditsPopUpProps) => {
   return null;
 };
 
-export default CreditsPopUpComponent;
+export default InfoMenu;
 

@@ -4,14 +4,14 @@ import { RootState } from "../../app/store";
 import { moneySlice } from "../../app/slicers";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "styles/components/Gamble.module.scss";
-import GambleWinStateComponent from "./GambleWinState/GambleWinStateComponent";
+import GambleWinState from "./GambleWinState/GambleWinState";
 
-type GambleComponent = {
+type GambleButton = {
   title: string;
   text: string;
 };
 
-function GambleComponent() {
+function GambleButtonComponent() {
   const money = useSelector((state: RootState) => state.money);
   const dispatch = useDispatch();
   const [winState, setWinState] = useState("");
@@ -34,9 +34,9 @@ function GambleComponent() {
     <div className={styles.GambleWrapper} onClick={() => gambleMoney()}>
       <div className={styles.GambleWrapper__Title}>gamble</div>
       <div className={styles.AllInButton}>ALL IN</div>
-      <GambleWinStateComponent win={winState}></GambleWinStateComponent>
+      <GambleWinState win={winState}></GambleWinState>
     </div>
   );
 }
 
-export default GambleComponent;
+export default GambleButtonComponent;

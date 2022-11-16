@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "styles/components/CreditsPopUp.module.scss";
 
-interface SettingsPopUpProps {
+
+interface InfoMenuProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const SettingsPopUpComponent = (props: SettingsPopUpProps) => {
+const InfoMenu = (props: InfoMenuProps) => {
   const isOpen = props.isOpen;
   const onClose = props.onClose;
 
@@ -39,4 +40,4 @@ const SettingsPopUpComponent = (props: SettingsPopUpProps) => {
   return null;
 };
 
-export default SettingsPopUpComponent;
+export default InfoMenu;
