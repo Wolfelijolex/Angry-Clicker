@@ -15,22 +15,22 @@ const InfoMenu = (props: InfoMenuProps) => {
     return null;
   } else if (isOpen) {
     return (
-      <div className={styles.BehindPopUpBackground}>
-        <div className={styles.PopUpButtonOverlayMenu}>
-          <div className={styles.PopUpTopBar}>
-            <div className={styles.PopUpButtonOverlayMenu__header}> settings </div>
-            <button className={styles.PopUpCloseButton} onClick={() => onClose()}>
+      <div className={styles.PopUpMenuBackground}>
+        <div className={styles.PopUpMenu}>
+          <div className={styles.PopUpMenuHeader}>
+            <div className={styles.PopUpMenuHeader_TitleBar}> settings </div>
+            <button className={styles.PopUpMenuCloseButton} onClick={() => onClose()}>
               x
             </button>
           </div>
-          <div className={styles.creditsButtonOverLayMenu__body}>
+          <div className={styles.PopUpMenuBody}>
             <div>
               Volume:<br></br>
-              <input id="typeinp" type="range" min="0" max="100" defaultValue="30" step="1" className={styles.slider}/><br/>
+              <input id="typeinp" type="range" min="0" max="100" defaultValue="30" step="1" className={styles.SettingsMenuSlider}/><br/>
               Angry Ammount:<br></br>
-              <input id="typeinp" type="range" min="0" max="100" defaultValue="30" step="1"  className={styles.slider}/><br/>
-              <button className={styles.saveButton} onClick={() => onClose()}>save</button>
-              <button className={styles.saveButton} onClick={() => onClose()}>cancel</button>
+              <input id="typeinp" type="range" min="0" max="100" defaultValue="30" step="1"  className={styles.SettingsMenuSlider}/><br/>
+              <button className={styles.SettingsMenuSaveButton} onClick={() => onClose()}>save</button>
+              <button className={styles.SettingsMenuSaveButton} onClick={() => onClose()}>cancel</button>
             </div>
           </div>
         </div>

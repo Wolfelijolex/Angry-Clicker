@@ -12,12 +12,12 @@ function PopUpMenu() {
 
   return (
     <div>
-      <button className={styles.PopUpButton} onClick={() => toggleInfoMenu()}>
+      <button className={styles.PopUpMenuButton} onClick={() => toggleInfoMenu()}>
         i
       </button>
       <InfoMenu isOpen={openInfoMenu} onClose={toggleInfoMenu}></InfoMenu>
 
-      <button className={styles.PopUpButton} onClick={() => toggleSettingsMenu()}>
+      <button className={styles.PopUpMenuButton} onClick={() => toggleSettingsMenu()}>
         ⚙️
       </button>
       <SettingsMenu isOpen={openSettingsMenu} onClose={toggleSettingsMenu}></SettingsMenu>

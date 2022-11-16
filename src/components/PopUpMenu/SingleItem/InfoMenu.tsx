@@ -14,21 +14,21 @@ const InfoMenu = (props: CreditsPopUpProps) => {
     return null;
   } else if (isOpen) {
     return (
-      <div className={styles.BehindPopUpBackground}>
-        <div className={styles.PopUpButtonOverlayMenu}>
-          <div className={styles.PopUpTopBar}>
-            <div className={styles.PopUpButtonOverlayMenu__header}> credits </div>
-            <button className={styles.PopUpCloseButton} onClick={() => onClose()}>
+      <div className={styles.PopUpMenuBackground}>
+        <div className={styles.PopUpMenu}>
+          <div className={styles.PopUpMenuHeader}>
+            <div className={styles.PopUpMenuHeader_TitleBar}> credits </div>
+            <button className={styles.PopUpMenuCloseButton} onClick={() => onClose()}>
               x
             </button>
           </div>
-          <div className={styles.creditsButtonOverLayMenu__body}>
-            <div className={styles.CreditsName}>😡😡😡😡😡😡😡😡</div>
-            <div className={styles.CreditsName}>Wolfgang Schwendtbauer, BSc.</div>
-            <div className={styles.CreditsName}>Alexander Gärtner, BSc.</div>
-            <div className={styles.CreditsName}>Johanna Krennhuber, BSc.</div>
-            <div className={styles.CreditsName}>Felix Rader, BSc.</div>
-            <div className={styles.CreditsName}>😡😡😡😡😡😡😡😡</div>
+          <div className={styles.PopUpMenuBody}>
+            <div className={styles.InfoMenuName}>😡😡😡😡😡😡😡😡</div>
+            <div className={styles.InfoMenuName}>Wolfgang Schwendtbauer, BSc.</div>
+            <div className={styles.InfoMenuName}>Alexander Gärtner, BSc.</div>
+            <div className={styles.InfoMenuName}>Johanna Krennhuber, BSc.</div>
+            <div className={styles.InfoMenuName}>Felix Rader, BSc.</div>
+            <div className={styles.InfoMenuName}>😡😡😡😡😡😡😡😡</div>
           </div>
         </div>
       </div>
