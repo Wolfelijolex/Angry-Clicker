@@ -19,6 +19,7 @@
     &__Won{
         @apply bg-green-400;
     }
+    user-select: none;
 }
 
 .GambleWrapper:hover{

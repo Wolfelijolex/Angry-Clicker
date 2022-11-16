@@ -16,10 +16,6 @@ function GambleComponent() {
   const dispatch = useDispatch();
   const [winState, setWinState] = useState("");
 
-  const toggleWinState = () => {
-    setWinState(winState);
-  };
-
   const gambleMoney = () => {
     if (money > 0) {
       if (Math.floor(Math.random() * 2)) {
