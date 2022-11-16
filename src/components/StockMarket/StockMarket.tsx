@@ -12,6 +12,8 @@ type StockMarketProps = {
   className?: string;
 };
 
+type Amount = "MAX" | 1 | 10 | 100;
+
 function StockMarket(props: StockMarketProps) {
   //Global state
   const coins = useSelector((state: RootState) => state.angryCoin);
@@ -22,7 +24,7 @@ function StockMarket(props: StockMarketProps) {
   const [stockClasses, setStockClasses] = useState([
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   ]);
-  const [buyAmount, setBuyAmount] = useState(1);
+  const [buyAmount, setBuyAmount] = useState<Amount>(1);
   //REFS
   const stockClassesRef = useRef(stockClasses);
   const priceRef = useRef(stockPrice);
@@ -59,24 +61,21 @@ function StockMarket(props: StockMarketProps) {
     return Math.floor(money / stockPrice);
   };
   const handleCoinBuy = () => {
-    if (money >= stockPrice * buyAmount || money >= stockPrice * buyAmount * -1) {
-      if (buyAmount === -1) {
-        const allBuy = getAllAmount();
-        dispatch(moneySlice.actions.subtract(stockPrice * allBuy));
-        dispatch(angryCoinSlice.actions.add(allBuy));
-        return;
-      }
+    if (buyAmount === "MAX") {
+      dispatch(moneySlice.actions.subtract(getAllAmount() * stockPrice));
+      dispatch(angryCoinSlice.actions.add(getAllAmount()));
+    } else if (money >= stockPrice * buyAmount || money >= stockPrice * buyAmount * -1) {
       dispatch(moneySlice.actions.subtract(stockPrice * buyAmount));
       dispatch(angryCoinSlice.actions.add(buyAmount));
     }
   };
   const handleCoinSell = () => {
-    if (coins >= buyAmount) {
+    if (buyAmount === "MAX" || coins < buyAmount) {
+      dispatch(moneySlice.actions.add(coins * stockPrice));
+      dispatch(angryCoinSlice.actions.subtract(coins));
+    } else {
       dispatch(moneySlice.actions.add(stockPrice * buyAmount));
       dispatch(angryCoinSlice.actions.subtract(buyAmount));
-    } else if (coins < buyAmount) {
-      dispatch(moneySlice.actions.add(stockPrice * coins));
-      dispatch(angryCoinSlice.actions.subtract(coins));
     }
   };
 
@@ -104,12 +103,17 @@ function StockMarket(props: StockMarketProps) {
           <p className={"w-7"}>{coins}</p>
         </div>
         {/* Stockmarket interface */}
-        <AmountSelector amount={buyAmount} setAmount={setBuyAmount} hasAll={true} className={`${styles.StockMarket__amount}`} />
+        <AmountSelector<Amount>
+          amount={buyAmount}
+          setAmount={setBuyAmount}
+          values={[1, 10, 100, "MAX"]}
+          className={`${styles.StockMarket__amount}`}
+        />
         {/* Stockmarket button flex */}
         <div className={`${styles.StockMarket__buttons}`}>
           <button
             data-testid="stockmarket-buy"
-            disabled={buyAmount * stockPrice > money || buyAmount == 0 || getAllAmount() == 0}
+            disabled={(buyAmount !== "MAX" && buyAmount * stockPrice > money) || getAllAmount() == 0}
             className={`${styles.StockMarket__buttons__buy}`}
             onClick={handleCoinBuy}
           >
@@ -117,7 +121,7 @@ function StockMarket(props: StockMarketProps) {
           </button>
           <button
             data-testid="stockmarket-sell"
-            disabled={coins == 0 || buyAmount == 0 || getAllAmount() == 0}
+            disabled={coins === 0 || (buyAmount !== "MAX" && coins < buyAmount)}
             className={`${styles.StockMarket__buttons__sell}`}
             onClick={handleCoinSell}
           >
