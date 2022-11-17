@@ -7,36 +7,35 @@ interface InfoMenuProps {
 }
 
 const InfoMenu = (props: InfoMenuProps) => {
-  const isOpen = props.isOpen;
-  const onClose = props.onClose;
+  const { isOpen, onClose } = props;
 
   if (!isOpen) {
     return null;
-  } else if (isOpen) {
-    return (
-      <div className={styles.PopUpMenuBackground}>
-        <div className={styles.PopUpMenu}>
-          <div className={styles.PopUpMenuHeader}>
-            <div className={styles.PopUpMenuHeader_TitleBar}> settings </div>
-            <button className={styles.PopUpMenuCloseButton} onClick={() => onClose()}>
-              x
-            </button>
-          </div>
-          <div className={styles.PopUpMenuBody}>
-            <div>
-              Volume:<br></br>
-              <input id="typeinp" type="range" min="0" max="100" defaultValue="30" step="1" className={styles.SettingsMenuSlider}/><br/>
-              Angry Ammount:<br></br>
-              <input id="typeinp" type="range" min="0" max="100" defaultValue="30" step="1"  className={styles.SettingsMenuSlider}/><br/>
-              <button className={styles.SettingsMenuSaveButton} onClick={() => onClose()}>save</button>
-              <button className={styles.SettingsMenuSaveButton} onClick={() => onClose()}>cancel</button>
-            </div>
+  }
+  return (
+    <div className={styles.PopUpMenuBackground}>
+      <div className={styles.PopUpMenu}>
+        <div className={styles.PopUpMenuHeader}>
+          <div className={styles.PopUpMenuHeader_TitleBar}>settings</div>
+          <button className={styles.PopUpMenuCloseButton} onClick={() => onClose()}>x</button>
+        </div>
+
+        <div className={styles.PopUpMenuBody}>
+          <div>
+            <label htmlFor="input-volume" className="text-black">Volume:</label>
+            <input id="input-volume" type="range" min="0" max="100" defaultValue="30" step="1" className={styles.SettingsMenuSlider} />
+
+            <label htmlFor="input-angryAmount" className="text-black">Angry Amount:</label>
+            <input id="input-angryAmount" type="range" min="0" max="100" defaultValue="30" step="1" className={styles.SettingsMenuSlider} />
+
+            <button className={styles.SettingsMenuSaveButton} onClick={() => onClose()}>save</button>
+            <button className={styles.SettingsMenuSaveButton} onClick={() => onClose()}>cancel</button>
           </div>
         </div>
+
       </div>
-    );
-  }
-  return null;
+    </div>
+  );
 };
 
 export default InfoMenu;
