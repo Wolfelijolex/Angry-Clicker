@@ -1,25 +1,22 @@
 import React, { useEffect } from "react";
-import styles from "../../styles/pages/App.module.scss";
-import AngryButton from "../../components/AngryButton/AngryButtonComponent";
-import PopUp from "../../components/PopUpComponent/PopUpComponent";
+import styles from "styles/pages/App.module.scss";
+import AngryButton from "components/AngryButton/AngryButtonComponent";
+import PopUp from "components/PopUpComponent/PopUpComponent";
 import ShopComponent from "components/ShopComponent/ShopComponent";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../app/store";
-import { moneySlice } from "../../app/slicers";
-import StockMarket from "../../components/StockMarket/StockMarket";
+import { RootState } from "app/store";
+import { moneySlice } from "app/slicers";
+import StockMarket from "components/StockMarket/StockMarket";
 import { autoClickers } from "app/autoClickers";
 import Tarot from "components/Tarot/Tarot";
 import CreditsPopupComponent from "components/CreditsPopupComponent/CreditsButtonComponent";
 import GambleComponent from "components/GambleComponent/GambleComponent";
+import { saveGame } from "app/storageHandler";
 
 function App() {
   const rootState = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
-  const {
-    money,
-    upgrades: { clickMultiplier: multiplier },
-    autoClickers: autoClickersState,
-  } = rootState;
+  const { autoClickers: autoClickersState } = rootState;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -35,7 +32,7 @@ function App() {
   }, [autoClickersState]);
 
   useEffect(() => {
-    localStorage.setItem("save", JSON.stringify(rootState));
+    saveGame(rootState);
   }, [rootState]);
 
   return (

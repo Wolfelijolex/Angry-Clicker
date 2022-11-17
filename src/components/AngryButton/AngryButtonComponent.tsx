@@ -1,15 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../app/store";
-import logo from "../../assets/angryScaled.png";
-import betterStyle from "../../styles/components/AngryButton.module.scss";
-import { moneySlice } from "../../app/slicers";
+import { RootState } from "app/store";
+import logo from "assets/angryScaled.png";
+import betterStyle from "styles/components/AngryButton.module.scss";
+import { moneySlice } from "app/slicers";
 
 type AngryButtonProps = {
   title: string;
 };
-
-//UWU
 
 function AngryButton(props: AngryButtonProps) {
   const money = useSelector((state: RootState) => state.money);

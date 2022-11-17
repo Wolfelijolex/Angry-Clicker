@@ -38,4 +38,3 @@ const CreditsPopUpComponent = (props: CreditsPopUpProps) => {
 };
 
 export default CreditsPopUpComponent;
-

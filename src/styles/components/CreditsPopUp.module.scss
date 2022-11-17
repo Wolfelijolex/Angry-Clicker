@@ -11,16 +11,16 @@
   margin-left: 0.5rem;
   font-weight: bold;
   transition: all 0.2s ease-in-out;
-}
 
-.PopUpButton:hover {
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
-}
+  &:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+  }
 
-.PopUpButton:active {
-  background-color: rgb(220, 220, 220);
-  color: rgb(255, 255, 255);
+  &:active {
+    background-color: rgb(220, 220, 220);
+    color: rgb(255, 255, 255);
+  }
 }
 
 .BehindPopUpBackground {
@@ -78,18 +78,17 @@
   height: 2rem;
   transition: ease-in-out 0.2s;
 
-}
+  &:hover {
+    background-color: rgb(255, 64, 121);
+    color: rgb(0, 0, 0);
+    transition: ease-in-out 0.2s;
+  }
 
-.PopUpCloseButton:hover {
-  background-color: rgb(255, 64, 121);
-  color: rgb(0, 0, 0);
-  transition: ease-in-out 0.2s;
-}
-
-.PopUpCloseButton:active {
-  background-color: rgb(122, 37, 54);
-  color: rgb(255, 255, 255);
-  transition: ease-in-out 0.2s;
+  &:active {
+    background-color: rgb(122, 37, 54);
+    color: rgb(255, 255, 255);
+    transition: ease-in-out 0.2s;
+  }
 }
 
 .creditsButtonOverLayMenu__body {
@@ -106,17 +105,19 @@
   transition: ease-in-out 0.2s;
   font-weight: bold;
   color: rgb(26, 26, 26);
-}
 
-.CreditsName:hover {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='47' height='56' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>😡</text></svg>") 16 0, auto;
-  color: rgb(125, 20, 52);
-  transition: ease-in-out 0.2s;
-}
+  &:hover {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='47' height='56' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>😡</text></svg>")
+        16 0,
+      auto;
+    color: rgb(125, 20, 52);
+  }
 
-.CreditsName:active {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='28' height='34' viewport='0 0 100 100' style='fill:black;font-size:17px;'><text y='50%'>😡</text></svg>") 16 0, auto;
-  transition: ease-in-out 0.2s;
+  &:active {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='28' height='34' viewport='0 0 100 100' style='fill:black;font-size:17px;'><text y='50%'>😡</text></svg>")
+        16 0,
+      auto;
+  }
 }
 
 .saveButton {
@@ -132,20 +133,20 @@
   margin-left: 0.5rem;
   font-weight: bold;
   transition: all 0.2s ease-in-out;
-}
-.saveButton:hover {
-  background-color: rgb(109, 109, 109);
-  color: rgb(0, 0, 0);
-}
 
-.saveButton:active {
+  &:hover {
+    background-color: rgb(109, 109, 109);
+    color: rgb(0, 0, 0);
+  }
 
-  background-color: rgb(66, 66, 66);
-  color: rgb(255, 255, 255);
+  &:active {
+    background-color: rgb(66, 66, 66);
+    color: rgb(255, 255, 255);
+  }
 }
 
 .slider {
-  width: 100% ;
+  width: 100%;
   height: 15px;
   background: #d3d3d3;
   outline: none;

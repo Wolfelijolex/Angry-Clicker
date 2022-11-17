@@ -1,21 +1,19 @@
-import React from "react";
-import popUpStyle from "../../styles/components/PopUp.module.scss";
+import React, { useState } from "react";
+import popUpStyle from "styles/components/PopUp.module.scss";
 
 type PopUpComponentProps = {
   title: string;
 };
 
-//UWU
-
 function PopUpComponent(props: PopUpComponentProps) {
-  const [show, setShow] = React.useState(true);
+  const [show, setShow] = useState(true);
 
   return (
     <div className={popUpStyle.PopUpComponent_popUpAd}>
       <button className={popUpStyle.PopUpComponent_button} onClick={() => setShow(!show)}>
         ✉️😡 X
       </button>
-      {show ? (
+      {!show ? null : (
         <div>
           <div className={popUpStyle.PopUpComponent_container}>
             <h1 className={popUpStyle.PopUpComponent_title}>{props.title}</h1>
@@ -30,7 +28,7 @@ function PopUpComponent(props: PopUpComponentProps) {
             </a>
           </div>
         </div>
-      ) : null}
+      )}
     </div>
   );
 }

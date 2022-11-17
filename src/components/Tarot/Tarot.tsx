@@ -1,22 +1,23 @@
-import { moneySlice, tarotSlice, TarotUpdate } from "app/slicers";
+import React, { useState } from "react";
 import { TarotId, tarots } from "app/tarots";
-import React from "react";
+import { moneySlice, tarotSlice, TarotUpdate } from "app/slicers";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../app/store";
+import { RootState } from "app/store";
 import TarotCard from "./TarotCard/TarotCard";
-import styles from "../../styles/components/Tarot.module.scss";
+import styles from "styles/components/Tarot.module.scss";
 
 type TarotProps = {
   title: string;
 };
 
+const tarotDuration = 6000;
+
 function Tarot(props: TarotProps) {
-  const tarotDuration = 6000;
   const tarot = useSelector((state: RootState) => state.tarot);
-  const [currentTarot, setCurrentTarot] = React.useState<TarotId>(0);
-  const [cardFlip, setCardFlip] = React.useState<boolean>(false);
-  const dispatch = useDispatch();
   const money = useSelector((state: RootState) => state.money);
+  const dispatch = useDispatch();
+  const [currentTarot, setCurrentTarot] = useState<TarotId>(0);
+  const [cardFlip, setCardFlip] = useState<boolean>(false);
 
   const rollNewTarot = () => {
     handleFlip(true);
@@ -72,13 +73,11 @@ function Tarot(props: TarotProps) {
       <div className={styles.Tarot__Wrapper}>
         <div
           className={`flex justify-center ${styles.Tarot__Front} ${cardFlip ? styles.flip : ""}`}
-          onClick={
-            tarot[0]
-              ? rollNewTarot
-              : () => {
-                /*nothing happens*/
-              }
-          }
+          onClick={() => {
+            if (tarot[0] === true) {
+              rollNewTarot();
+            }
+          }}
         >
           <TarotCard id={currentTarot}></TarotCard>
         </div>

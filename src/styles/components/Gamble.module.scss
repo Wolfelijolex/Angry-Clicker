@@ -5,71 +5,69 @@
   margin: 10px;
   padding: 15px;
   border-radius: 10px;
+  user-select: none;
+
   &__Title {
     @apply text-red-900 font-bold text-2xl;
     text-transform: uppercase;
     display: flex;
     justify-content: center;
   }
+
   &__Wrapper {
     height: 100%;
     position: relative;
   }
+
   &__Won {
     @apply bg-green-400;
   }
-  user-select: none;
+
+  &:hover {
+    @apply bg-emerald-200;
+  }
+
+  &:active {
+    @apply bg-emerald-300;
+  }
 }
 
-.GambleWrapper:hover {
-  @apply bg-emerald-200;
-}
-.GambleWrapper:active {
-  @apply bg-emerald-300;
+@mixin BaseButton {
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  display: flex;
+  height: 40%;
+  width: 100%;
+  border-radius: 10px;
 }
 
 .AllInButton {
+  @include BaseButton;
   color: black;
   font-size: larger;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 25%;
-  width: 100%;
-  border-radius: 10px;
 }
 
 .WinButton {
+  @include BaseButton;
   @apply bg-green-400;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40%;
-  width: 100%;
-  border-radius: 10px;
 }
+
 .LoseButton {
+  @include BaseButton;
   @apply bg-red-400;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40%;
-  width: 100%;
-  border-radius: 10px;
 }
+
+.GambleAdvertisment {
+  @include BaseButton;
+  @apply bg-blue-400;
+}
+
 .NotEnoughMoneyButton {
+  @include BaseButton;
   @apply bg-red-300;
   color: black;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40%;
-  width: 100%;
-  border-radius: 10px;
 
   // create animation that hides the button after 5 seconds if not clicked
   animation: hide 6s;
@@ -82,15 +80,4 @@
       opacity: 0;
     }
   }
-}
-
-.GambleAdvertisment {
-  @apply bg-blue-400;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40%;
-  width: 100%;
-  border-radius: 10px;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { RootState } from "../../app/store";
-import { moneySlice } from "../../app/slicers";
+import { RootState } from "app/store";
+import { moneySlice } from "app/slicers";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "styles/components/Gamble.module.scss";
 import GambleWinStateComponent from "./GambleWinState/GambleWinStateComponent";

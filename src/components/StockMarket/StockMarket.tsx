@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
-import styles from "../../styles/components/StockMarket.module.scss";
-import "../../styles/components/Stock.scss";
-import source from "../../assets/angryScaled.png";
+import styles from "styles/components/StockMarket.module.scss";
+import "styles/components/Stock.scss";
+import source from "assets/angryScaled.png";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../app/store";
-import { moneySlice, angryCoinSlice } from "../../app/slicers";
-import AmountSelector from "components/shared/AmountSelector";
+import { RootState } from "app/store";
+import { moneySlice, angryCoinSlice } from "app/slicers";
+import Selector from "components/Selector/Selector";
 
 type StockMarketProps = {
   title: string;
   className?: string;
 };
 
-type Amount = "MAX" | 1 | 10 | 100;
+type Amount = "MAX" | number;
 
 function StockMarket(props: StockMarketProps) {
   //Global state
@@ -21,9 +21,7 @@ function StockMarket(props: StockMarketProps) {
   const dispatch = useDispatch();
   //STATES
   const [stockPrice, setStockPrice] = useState(Math.floor(Math.random() * 200));
-  const [stockClasses, setStockClasses] = useState([
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  ]);
+  const [stockClasses, setStockClasses] = useState(new Array(38).fill(0));
   const [buyAmount, setBuyAmount] = useState<Amount>(1);
   //REFS
   const stockClassesRef = useRef(stockClasses);
@@ -57,9 +55,11 @@ function StockMarket(props: StockMarketProps) {
     }
     setStockClasses(stockClassesRef.current);
   };
+
   const getAllAmount = () => {
     return Math.floor(money / stockPrice);
   };
+
   const handleCoinBuy = () => {
     if (buyAmount === "MAX") {
       dispatch(moneySlice.actions.subtract(getAllAmount() * stockPrice));
@@ -69,6 +69,7 @@ function StockMarket(props: StockMarketProps) {
       dispatch(angryCoinSlice.actions.add(buyAmount));
     }
   };
+
   const handleCoinSell = () => {
     if (buyAmount === "MAX" || coins < buyAmount) {
       dispatch(moneySlice.actions.add(coins * stockPrice));
@@ -103,7 +104,7 @@ function StockMarket(props: StockMarketProps) {
           <p className={"w-7"}>{coins}</p>
         </div>
         {/* Stockmarket interface */}
-        <AmountSelector<Amount>
+        <Selector<Amount>
           amount={buyAmount}
           setAmount={setBuyAmount}
           values={[1, 10, 100, "MAX"]}
