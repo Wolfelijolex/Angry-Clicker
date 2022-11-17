@@ -60,7 +60,7 @@ describe("Shop Component", () => {
     cy.get('[data-testid="shop-item-angryBird"]').click();
 
     cy.get('[data-testid="shop-item-angryBird"]').should("contain.text", "5");
-    cy.get('[data-testid="shop-item-angryBird"]').should("contain.text", "€20");
+    cy.get('[data-testid="shop-item-angryBird"]').should("contain.text", "😡20");
   });
 });
 
