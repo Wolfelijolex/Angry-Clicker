@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { autoClickersSlice, moneySlice, upgradesSlice, angryCoinSlice, tarotSlice } from "./slicers";
+import { autoClickersSlice, moneySlice, upgradesSlice, angryCoinSlice } from "./slicers";
 
 export const store = configureStore({
   reducer: {
@@ -7,7 +7,6 @@ export const store = configureStore({
     upgrades: upgradesSlice.reducer,
     autoClickers: autoClickersSlice.reducer,
     angryCoin: angryCoinSlice.reducer,
-    tarot: tarotSlice.reducer,
   },
 });
 

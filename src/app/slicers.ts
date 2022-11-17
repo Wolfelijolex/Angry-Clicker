@@ -1,10 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AutoClickerId } from "./autoClickers";
 import { loadGameState } from "./storageHandler";
-import { TarotId } from "./tarots";
 import { UpgradeId } from "./upgrades";
 
-const { initialMoney, initialAngrycoin, initialUpgrades, initialAutoClickers, intialTarot } = loadGameState();
+const { initialMoney, initialAngrycoin, initialUpgrades, initialAutoClickers } = loadGameState();
 
 // ----------------- Money -----------------
 export const moneySlice = createSlice({
@@ -66,25 +65,6 @@ export const autoClickersSlice = createSlice({
       return {
         ...state,
         [action.payload.id]: state[action.payload.id] - action.payload.amount,
-      };
-    },
-  },
-});
-
-// ----------------- Tarots -----------------
-export type TarotUpdate = {
-  id: TarotId;
-  set: boolean;
-};
-
-export const tarotSlice = createSlice({
-  name: "tarots",
-  initialState: intialTarot,
-  reducers: {
-    set: (state, action: PayloadAction<TarotUpdate>) => {
-      return {
-        ...state,
-        [action.payload.id]: action.payload.set,
       };
     },
   },

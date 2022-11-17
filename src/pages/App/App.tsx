@@ -36,22 +36,20 @@ function App() {
   }, [rootState]);
 
   return (
-    <div className="overflow-hidden">
-      <PopUp title="Become Angry!!!"></PopUp>
+    <div>
+      <PopUp title="Become Angry!!!" />
       <div className={styles.LayoutGrid}>
         {/* LEFT COLUMN */}
         <div className={`flex flex-col bg-red-300 h-screen ${styles.LayoutGrid__Left}`}>
-          <StockMarket title="ANGRY Coin"></StockMarket>
-          <GambleComponent></GambleComponent>
-          <Tarot title={"TAR0T"}></Tarot>
+          <StockMarket title="ANGRY Coin" />
+          <GambleComponent />
+          <Tarot title={"TAR0T"} />
         </div>
         {/* MIDDLE COLUMN */}
-        <div className={`border-slate-300 border-solid border-x-2  h-screen ${styles.LayoutGrid__Mid}`}>
-          <CreditsPopupComponent></CreditsPopupComponent>
+        <div className={`border-slate-300 border-solid border-x h-screen flex flex-col ${styles.LayoutGrid__Mid}`}>
+          <CreditsPopupComponent />
           <div className={styles.App}>
-            <header className={styles.App_header}>
-              <AngryButton title="Click the Angry!!! 😡"></AngryButton>
-            </header>
+            <AngryButton title="Click the Angry!!! 😡" />
           </div>
         </div>
 

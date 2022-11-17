@@ -1,6 +1,5 @@
 import { AutoClickerId } from "./autoClickers";
 import { RootState } from "./store";
-import { TarotId } from "./tarots";
 import { UpgradeId } from "./upgrades";
 
 const SAVE_KEY = "save";
@@ -25,19 +24,10 @@ export function loadGameState() {
     angryGalaxy: 0,
   };
 
-  const intialTarot: { [key in TarotId]: boolean } = stateFromStorage.tarot ?? {
-    0: true,
-    1: false,
-    2: false,
-    3: false,
-    4: false,
-  };
-
   return {
     initialMoney,
     initialAngrycoin,
     initialUpgrades,
     initialAutoClickers,
-    intialTarot,
   };
 }
