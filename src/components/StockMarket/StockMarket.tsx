@@ -31,9 +31,9 @@ function StockMarket(props: StockMarketProps) {
   useEffect(() => {
     const interval = setInterval(() => {
       if (Math.floor(Math.random() * 2) && priceRef.current > 20) {
-        priceRef.current = priceRef.current - Math.floor(Math.random() * 20 - 1);
+        priceRef.current = priceRef.current - Math.floor(Math.random() * 20) - 1;
       } else {
-        priceRef.current = priceRef.current + Math.floor(Math.random() * 20 + 1);
+        priceRef.current = priceRef.current + Math.floor(Math.random() * 20) + 1;
         if (priceRef.current > 200) {
           priceRef.current = 200;
         }

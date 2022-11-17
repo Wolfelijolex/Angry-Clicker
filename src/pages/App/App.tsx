@@ -54,7 +54,7 @@ function App() {
         </div>
 
         {/* RIGHT COLUMN */}
-        <div className={`h-screen ${styles.LayoutGrid__Right}`}>
+        <div className={`h-screen overflow-y-auto ${styles.LayoutGrid__Right}`}>
           <ShopComponent />
         </div>
       </div>
