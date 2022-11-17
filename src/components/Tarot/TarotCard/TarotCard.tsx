@@ -1,7 +1,7 @@
 import React from "react";
 import { TarotId } from "app/tarots";
-import { tarots } from "../../../app/tarots";
-import styles from "../../../styles/components/TarotCard.module.scss";
+import { tarots } from "app/tarots";
+import styles from "styles/components/TarotCard.module.scss";
 
 type TarotCardProps = {
   id: TarotId;

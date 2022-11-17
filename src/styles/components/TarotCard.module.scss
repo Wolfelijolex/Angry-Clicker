@@ -3,15 +3,19 @@
   padding: 20px;
   min-width: 50%;
   width: 50%;
-  height: 80%;
+  height: 100%;
   align-items: center;
+  overflow: hidden;
+
   &__back {
     @apply justify-center;
   }
+
   &__ImageWrapper {
     @apply bg-slate-800;
     width: 100%;
   }
+
   &__Image {
     aspect-ratio: 16/9;
     &__back {
@@ -19,11 +23,13 @@
      object-fit: cover;
     }
   }
+
   &__Name {
     @apply font-bold text-2xl;
   }
+
   &__Desc {
-    @apply text-center;
+    @apply text-center text-sm;
     white-space:  pre-wrap;
   }
 }

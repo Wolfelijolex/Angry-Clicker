@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
 }
 
 .App_logo {
@@ -11,15 +17,6 @@
   .App_logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
-
-.App_header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
 }
 
 .App_link {

@@ -1,54 +1,49 @@
-import { moneySlice, tarotSlice, TarotUpdate } from "app/slicers";
+import React, { useState } from "react";
 import { TarotId, tarots } from "app/tarots";
-import React from "react";
+import { moneySlice } from "app/slicers";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../app/store";
+import { RootState } from "app/store";
 import TarotCard from "./TarotCard/TarotCard";
-import styles from "../../styles/components/Tarot.module.scss";
+import styles from "styles/components/Tarot.module.scss";
 
 type TarotProps = {
   title: string;
 };
 
+const tarotDuration = 6000;
+
+const isTarotId = (id: number): id is TarotId => {
+  return id >= 0 && id < tarots.length;
+};
+
 function Tarot(props: TarotProps) {
-  const tarotDuration = 6000;
-  const tarot = useSelector((state: RootState) => state.tarot);
-  const [currentTarot, setCurrentTarot] = React.useState<TarotId>(0);
-  const [cardFlip, setCardFlip] = React.useState<boolean>(false);
-  const dispatch = useDispatch();
   const money = useSelector((state: RootState) => state.money);
+  const dispatch = useDispatch();
+
+  const [currentTarot, setCurrentTarot] = useState<TarotId>(0);
+  const [cardFlip, setCardFlip] = useState<boolean>(false);
 
   const rollNewTarot = () => {
     handleFlip(true);
-    handleTarotChange(currentTarot);
-    const dice = Math.floor(Math.random() * (Object.keys(tarot).length - 1) + 1);
-    setCurrentTarot(dice as TarotId);
-    handleTarotChange(dice as TarotId);
-    handleCertainTarot(dice as TarotId);
+    const dice = Math.floor(Math.random() * (tarots.length - 1) + 1);
+    
+    if (!isTarotId(dice)) {
+      return;
+    }
+
+    setCurrentTarot(dice);
+    handleTarotAction(dice);
     setTimeout(() => {
-      handleTarotChange(dice as TarotId);
       setCurrentTarot(0);
       handleFlip(false);
-      dispatch(tarotSlice.actions.set({ id: 0, set: true }));
     }, tarotDuration);
-  };
-
-  const handleTarotChange = (updateID: TarotId) => {
-    const update: TarotUpdate = {
-      id: updateID,
-      set: true,
-    };
-    if (tarot[updateID]) {
-      update.set = false;
-    }
-    dispatch(tarotSlice.actions.set(update));
   };
 
   const handleFlip = (set: boolean) => {
     setCardFlip(set);
   };
 
-  const handleCertainTarot = (id: TarotId) => {
+  const handleTarotAction = (id: TarotId) => {
     const mod = tarots[id].mod;
     switch (id) {
     case 1:
@@ -72,18 +67,16 @@ function Tarot(props: TarotProps) {
       <div className={styles.Tarot__Wrapper}>
         <div
           className={`flex justify-center ${styles.Tarot__Front} ${cardFlip ? styles.flip : ""}`}
-          onClick={
-            tarot[0]
-              ? rollNewTarot
-              : () => {
-                /*nothing happens*/
-              }
-          }
+          onClick={() => {
+            if (currentTarot === 0) {
+              rollNewTarot();
+            }
+          }}
         >
-          <TarotCard id={currentTarot}></TarotCard>
+          <TarotCard id={currentTarot} />
         </div>
         <div className={`flex justify-center ${styles.Tarot__Back} ${cardFlip ? styles.flip : ""}`}>
-          <TarotCard id={0} back={true}></TarotCard>
+          <TarotCard id={0} back={true} />
         </div>
       </div>
     </section>

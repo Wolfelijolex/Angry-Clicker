@@ -1,48 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AutoClickerId } from "./autoClickers";
-import { TarotId } from "./tarots";
+import { loadGameState } from "./storageHandler";
 import { UpgradeId } from "./upgrades";
 
-const stateFromStorage = JSON.parse(localStorage.getItem("save") ?? "{}");
-
-let initialMoney = 0;
-let initialAngrycoin = 0;
-let initialUpgrades: { [key in UpgradeId]: number } = {
-  clickMultiplier: 1,
-};
-
-let initialAutoClickers: { [key in AutoClickerId]: number } = {
-  angryBird: 0,
-  angryFarm: 0,
-  angryFactory: 0,
-  angryMine: 0,
-  angryPlanet: 0,
-  angryGalaxy: 0,
-};
-
-let intialTarot: { [key in TarotId]: boolean } = {
-  0: true,
-  1: false,
-  2: false,
-  3: false,
-  4: false,
-};
-
-if (stateFromStorage.money) {
-  initialMoney = stateFromStorage.money;
-}
-if (stateFromStorage.angrycoin) {
-  initialAngrycoin = stateFromStorage.angrycoin;
-}
-if (stateFromStorage.upgrades) {
-  initialUpgrades = stateFromStorage.upgrades;
-}
-if (stateFromStorage.autoClickers) {
-  initialAutoClickers = stateFromStorage.autoClickers;
-}
-if (stateFromStorage.tarot) {
-  intialTarot = stateFromStorage.tarot;
-}
+const { initialMoney, initialAngrycoin, initialUpgrades, initialAutoClickers } = loadGameState();
 
 // ----------------- Money -----------------
 export const moneySlice = createSlice({
@@ -66,6 +27,11 @@ export const angryCoinSlice = createSlice({
 });
 
 // ----------------- Upgrades -----------------
+type UpgradeUpdate = {
+  id: UpgradeId;
+  amount: number;
+};
+
 export const upgradesSlice = createSlice({
   name: "upgrades",
   initialState: initialUpgrades,
@@ -79,12 +45,12 @@ export const upgradesSlice = createSlice({
   },
 });
 
-export type UpgradeUpdate = {
-  id: UpgradeId;
+// ----------------- Autoclickes -----------------
+type AutoClickerUpdate = {
+  id: AutoClickerId;
   amount: number;
 };
 
-// ----------------- Autoclickes -----------------
 export const autoClickersSlice = createSlice({
   name: "autoClickers",
   initialState: initialAutoClickers,
@@ -103,27 +69,3 @@ export const autoClickersSlice = createSlice({
     },
   },
 });
-
-export type AutoClickerUpdate = {
-  id: AutoClickerId;
-  amount: number;
-};
-
-// ----------------- Tarots -----------------
-export const tarotSlice = createSlice({
-  name: "tarots",
-  initialState: intialTarot,
-  reducers: {
-    set: (state, action: PayloadAction<TarotUpdate>) => {
-      return {
-        ...state,
-        [action.payload.id]: action.payload.set,
-      };
-    },
-  },
-});
-
-export type TarotUpdate = {
-  id: TarotId;
-  set: boolean;
-};

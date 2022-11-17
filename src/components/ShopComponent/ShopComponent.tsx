@@ -1,13 +1,13 @@
+import React, { useState } from "react";
 import { autoClickers } from "app/autoClickers";
 import { upgrades } from "app/upgrades";
 import { RootState } from "app/store";
-import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SingleItem from "./SingleItem/SingleItem";
-import AmountSelector from "components/shared/AmountSelector";
+import Selector from "components/Selector/Selector";
 import { autoClickersSlice, moneySlice, upgradesSlice } from "app/slicers";
 
-type Amount = 1 | 10 | 100 | "MAX";
+type Amount = "MAX" | number;
 
 function getSingleItemPrice(basePrice: number, owned: number): number {
   return Math.floor(basePrice * Math.pow(1.15, owned));
@@ -35,7 +35,7 @@ function getAmount(amount: Amount, basePrice: number, owned: number, totalMoney:
   return nextAmount - 1;
 }
 
-export default function ShopComponent() {
+function ShopComponent() {
   const appState = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
   const [buyAmount, setBuyAmount] = useState<Amount>(1);
@@ -43,7 +43,7 @@ export default function ShopComponent() {
   return (
     <div data-testid="shop" className="mx-6">
       <div className="w-100 text-center mb-3 text-2xl font-bold">Angry Shop</div>
-      <AmountSelector<Amount> amount={buyAmount} setAmount={setBuyAmount} values={[1, 10, 100, "MAX"]} />
+      <Selector<Amount> amount={buyAmount} setAmount={setBuyAmount} values={[1, 10, 100, "MAX"]} />
       <div className="w-100 text-center mt-4 mb-2 text-xl">Upgrade Shop</div>
       {upgrades.map((upgrade) => {
         const amount = getAmount(buyAmount, upgrade.basePrice, appState.upgrades[upgrade.id], appState.money);
@@ -85,3 +85,5 @@ export default function ShopComponent() {
     </div>
   );
 }
+
+export default ShopComponent;

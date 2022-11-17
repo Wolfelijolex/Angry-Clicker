@@ -1,15 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import { RootState } from "../../app/store";
-import { moneySlice } from "../../app/slicers";
+import { RootState } from "app/store";
+import { moneySlice } from "app/slicers";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "styles/components/Gamble.module.scss";
 import GambleWinState from "./GambleWinState/GambleWinState";
-
-type GambleButton = {
-  title: string;
-  text: string;
-};
 
 function GambleButtonComponent() {
   const money = useSelector((state: RootState) => state.money);
