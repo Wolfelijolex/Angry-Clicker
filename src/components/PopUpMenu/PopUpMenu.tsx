@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "styles/components/CreditsPopUp.module.scss";
-import InfoMenu from "./SingleItem/InfoMenu";
-import SettingsMenu from "./SingleItem/SettingsMenu";
+import InfoMenu from "./Menues/InfoMenu";
+import SettingsMenu from "./Menues/SettingsMenu";
 
 function PopUpMenu() {
   const [openInfoMenu, setToggleInfoMenu] = useState(false);
