@@ -19,6 +19,7 @@ function App() {
     money,
     upgrades: { clickMultiplier: multiplier },
     autoClickers: autoClickersState,
+    angryCoin
   } = rootState;
 
   useEffect(() => {

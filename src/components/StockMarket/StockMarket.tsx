@@ -16,8 +16,7 @@ type Amount = "MAX" | 1 | 10 | 100;
 
 function StockMarket(props: StockMarketProps) {
   //Global state
-  const coins = useSelector((state: RootState) => state.angryCoin);
-  const money = useSelector((state: RootState) => state.money);
+  const appState = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
   //STATES
   const [stockPrice, setStockPrice] = useState(Math.floor(Math.random() * 200));
@@ -58,21 +57,21 @@ function StockMarket(props: StockMarketProps) {
     setStockClasses(stockClassesRef.current);
   };
   const getAllAmount = () => {
-    return Math.floor(money / stockPrice);
+    return Math.floor(appState.money / stockPrice);
   };
   const handleCoinBuy = () => {
     if (buyAmount === "MAX") {
       dispatch(moneySlice.actions.subtract(getAllAmount() * stockPrice));
       dispatch(angryCoinSlice.actions.add(getAllAmount()));
-    } else if (money >= stockPrice * buyAmount || money >= stockPrice * buyAmount * -1) {
+    } else if (appState.money >= stockPrice * buyAmount || appState.money >= stockPrice * buyAmount * -1) {
       dispatch(moneySlice.actions.subtract(stockPrice * buyAmount));
       dispatch(angryCoinSlice.actions.add(buyAmount));
     }
   };
   const handleCoinSell = () => {
-    if (buyAmount === "MAX" || coins < buyAmount) {
-      dispatch(moneySlice.actions.add(coins * stockPrice));
-      dispatch(angryCoinSlice.actions.subtract(coins));
+    if (buyAmount === "MAX" || appState.angryCoin < buyAmount) {
+      dispatch(moneySlice.actions.add(appState.angryCoin * stockPrice));
+      dispatch(angryCoinSlice.actions.subtract(appState.angryCoin));
     } else {
       dispatch(moneySlice.actions.add(stockPrice * buyAmount));
       dispatch(angryCoinSlice.actions.subtract(buyAmount));
@@ -100,7 +99,7 @@ function StockMarket(props: StockMarketProps) {
         </div>
         <div className={`${styles.StockMarket__stockOwned}`}>
           <p>owned: </p>
-          <p className={"w-7"}>{coins}</p>
+          <p className={"w-7"}>{appState.angryCoin}</p>
         </div>
         {/* Stockmarket interface */}
         <AmountSelector<Amount>
@@ -113,7 +112,7 @@ function StockMarket(props: StockMarketProps) {
         <div className={`${styles.StockMarket__buttons}`}>
           <button
             data-testid="stockmarket-buy"
-            disabled={(buyAmount !== "MAX" && buyAmount * stockPrice > money) || getAllAmount() == 0}
+            disabled={(buyAmount !== "MAX" && buyAmount * stockPrice > appState.money) || getAllAmount() == 0}
             className={`${styles.StockMarket__buttons__buy}`}
             onClick={handleCoinBuy}
           >
@@ -121,7 +120,7 @@ function StockMarket(props: StockMarketProps) {
           </button>
           <button
             data-testid="stockmarket-sell"
-            disabled={coins === 0 || (buyAmount !== "MAX" && coins < buyAmount)}
+            disabled={appState.angryCoin === 0 || (buyAmount !== "MAX" && appState.angryCoin < buyAmount)}
             className={`${styles.StockMarket__buttons__sell}`}
             onClick={handleCoinSell}
           >
