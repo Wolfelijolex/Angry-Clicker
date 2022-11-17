@@ -1,4 +1,4 @@
-.PopUpButton {
+.PopUpMenuButton {
   width: 2.5rem;
   height: 2.5rem;
   text-align: center;
@@ -23,7 +23,7 @@
   }
 }
 
-.BehindPopUpBackground {
+.PopUpMenuBackground {
   position: absolute;
   top: 0;
   left: 0;
@@ -39,7 +39,7 @@
   cursor: default;
 }
 
-.PopUpButtonOverlayMenu {
+.PopUpMenu {
   border-radius: 2rem;
   position: absolute;
   top: 50%;
@@ -51,7 +51,7 @@
   background-color: whitesmoke;
 }
 
-.PopUpTopBar {
+.PopUpMenuHeader {
   position: absolute;
   display: flex;
   text-align: center;
@@ -59,7 +59,7 @@
   height: 2rem;
 }
 
-.PopUpButtonOverlayMenu__header {
+.PopUpMenuHeader_TitleBar {
   border-top-left-radius: 2rem;
   background-color: rgb(92, 90, 91);
   color: rgb(255, 255, 255);
@@ -69,7 +69,7 @@
   font-weight: bold;
 }
 
-.PopUpCloseButton {
+.PopUpMenuCloseButton {
   border-top-right-radius: 2rem;
   width: 15%;
   text-align: center;
@@ -91,15 +91,14 @@
   }
 }
 
-.creditsButtonOverLayMenu__body {
+.PopUpMenuBody {
   padding: 4rem 2rem 2rem;
   text-align: center;
-  color: rgb(0, 0, 0);
   font-weight: bold;
   margin: auto;
 }
 
-.CreditsName {
+.InfoMenuName {
   margin: auto;
   font-size: 1.5rem;
   transition: ease-in-out 0.2s;
@@ -120,7 +119,7 @@
   }
 }
 
-.saveButton {
+.SettingsMenuSaveButton {
   margin: auto;
   width: 40%;
   height: 2rem;
@@ -145,8 +144,8 @@
   }
 }
 
-.slider {
-  width: 100%;
+.SettingsMenuSlider {
+  width: 100% ;
   height: 15px;
   background: #d3d3d3;
   outline: none;

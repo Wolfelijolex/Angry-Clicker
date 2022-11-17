@@ -37,7 +37,7 @@ function SingleItem({ id, name, price, selectedAmount, onBuy, owned }: SingleIte
       <span>
         {name}
         <br />
-        {selectedAmount}x for €{price}
+        {selectedAmount}x for 😡{price}
       </span>
       <span className="text-xl font-bold">{owned}</span>
     </div>

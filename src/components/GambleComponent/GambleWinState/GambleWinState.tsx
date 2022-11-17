@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "styles/components/Gamble.module.scss";
 
-type GambleWinStateComponentProps = {
+type GambleWinStateProps = {
   win: string;
 };
 
-function GambleWinStateComponent(props: GambleWinStateComponentProps) {
+function GambleWinState(props: GambleWinStateProps) {
   const winState = props.win;
   if (winState == "won") {
     return <div className={styles.WinButton}> you won </div>;
@@ -18,4 +18,4 @@ function GambleWinStateComponent(props: GambleWinStateComponentProps) {
   }
 }
 
-export default GambleWinStateComponent;
+export default GambleWinState;
