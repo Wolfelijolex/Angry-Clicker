@@ -1,4 +1,4 @@
-.PopUpButton {
+.PopUpMenuButton {
   width: 2.5rem;
   height: 2.5rem;
   text-align: center;
@@ -13,17 +13,17 @@
   transition: all 0.2s ease-in-out;
 }
 
-.PopUpButton:hover {
+.PopUpMenuButton:hover {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
 }
 
-.PopUpButton:active {
+.PopUpMenuButton:active {
   background-color: rgb(220, 220, 220);
   color: rgb(255, 255, 255);
 }
 
-.BehindPopUpBackground {
+.PopUpMenuBackground {
   position: absolute;
   top: 0;
   left: 0;
@@ -39,7 +39,7 @@
   cursor: default;
 }
 
-.PopUpButtonOverlayMenu {
+.PopUpMenu {
   border-radius: 2rem;
   position: absolute;
   top: 50%;
@@ -51,7 +51,7 @@
   background-color: whitesmoke;
 }
 
-.PopUpTopBar {
+.PopUpMenuHeader {
   position: absolute;
   display: flex;
   text-align: center;
@@ -59,7 +59,7 @@
   height: 2rem;
 }
 
-.PopUpButtonOverlayMenu__header {
+.PopUpMenuHeader_TitleBar {
   border-top-left-radius: 2rem;
   background-color: rgb(92, 90, 91);
   color: rgb(255, 255, 255);
@@ -69,7 +69,7 @@
   font-weight: bold;
 }
 
-.PopUpCloseButton {
+.PopUpMenuCloseButton {
   border-top-right-radius: 2rem;
   width: 15%;
   text-align: center;
@@ -80,27 +80,26 @@
 
 }
 
-.PopUpCloseButton:hover {
+.PopUpMenuCloseButton:hover {
   background-color: rgb(255, 64, 121);
   color: rgb(0, 0, 0);
   transition: ease-in-out 0.2s;
 }
 
-.PopUpCloseButton:active {
+.PopUpMenuCloseButton:active {
   background-color: rgb(122, 37, 54);
   color: rgb(255, 255, 255);
   transition: ease-in-out 0.2s;
 }
 
-.creditsButtonOverLayMenu__body {
+.PopUpMenuBody {
   padding: 4rem 2rem 2rem;
   text-align: center;
-  color: rgb(0, 0, 0);
   font-weight: bold;
   margin: auto;
 }
 
-.CreditsName {
+.InfoMenuName {
   margin: auto;
   font-size: 1.5rem;
   transition: ease-in-out 0.2s;
@@ -108,18 +107,18 @@
   color: rgb(26, 26, 26);
 }
 
-.CreditsName:hover {
+.InfoMenuName:hover {
   cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='47' height='56' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>😡</text></svg>") 16 0, auto;
   color: rgb(125, 20, 52);
   transition: ease-in-out 0.2s;
 }
 
-.CreditsName:active {
+.InfoMenuName:active {
   cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='28' height='34' viewport='0 0 100 100' style='fill:black;font-size:17px;'><text y='50%'>😡</text></svg>") 16 0, auto;
   transition: ease-in-out 0.2s;
 }
 
-.saveButton {
+.SettingsMenuSaveButton {
   margin: auto;
   width: 40%;
   height: 2rem;
@@ -133,18 +132,18 @@
   font-weight: bold;
   transition: all 0.2s ease-in-out;
 }
-.saveButton:hover {
+.SettingsMenuSaveButton:hover {
   background-color: rgb(109, 109, 109);
   color: rgb(0, 0, 0);
 }
 
-.saveButton:active {
+.SettingsMenuSaveButton:active {
 
   background-color: rgb(66, 66, 66);
   color: rgb(255, 255, 255);
 }
 
-.slider {
+.SettingsMenuSlider {
   width: 100% ;
   height: 15px;
   background: #d3d3d3;
