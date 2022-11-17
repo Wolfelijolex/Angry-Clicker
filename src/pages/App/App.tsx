@@ -15,8 +15,8 @@ import GambleComponent from "components/GambleComponent/GambleButton";
 
 function App() {
   const rootState = useSelector((state: RootState) => state);
+  const autoClickersState = useSelector((state: RootState) => state.autoClickers);
   const dispatch = useDispatch();
-  const { autoClickers: autoClickersState } = rootState;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -36,7 +36,7 @@ function App() {
   }, [rootState]);
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <PopUp title="Become Angry!!!"></PopUp>
       <div className={styles.LayoutGrid}>
         {/* LEFT COLUMN */}
