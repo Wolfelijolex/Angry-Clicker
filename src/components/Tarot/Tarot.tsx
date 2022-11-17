@@ -16,6 +16,7 @@ function Tarot(props: TarotProps) {
   const tarot = useSelector((state: RootState) => state.tarot);
   const money = useSelector((state: RootState) => state.money);
   const dispatch = useDispatch();
+
   const [currentTarot, setCurrentTarot] = useState<TarotId>(0);
   const [cardFlip, setCardFlip] = useState<boolean>(false);
 

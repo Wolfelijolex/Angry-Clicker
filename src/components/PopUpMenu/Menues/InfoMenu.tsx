@@ -38,4 +38,3 @@ const InfoMenu = (props: CreditsPopUpProps) => {
 };
 
 export default InfoMenu;
-

@@ -4,16 +4,19 @@
   padding: 15px;
   border-radius: 10px;
   height: 45%;
+
   &__Title {
     @apply text-red-900 font-bold text-2xl;
     display: flex;
     justify-content: center;
   }
+
   &__Wrapper {
     height: 100%;
     position: relative;
 
   }
+
   &__Front {
     cursor: pointer;
     transform: rotateY(0deg);
@@ -23,6 +26,7 @@
     transform: rotateY(-180deg);
   }
 }
+
 .Tarot__Front,
 .Tarot__Back {
   transition: transform 2s ease;
@@ -37,6 +41,7 @@
   cursor: auto;
   transform: rotateY(1440deg);
 }
+
 .Tarot__Back.flip {
   cursor: auto;
   transform: rotateY(1260deg);

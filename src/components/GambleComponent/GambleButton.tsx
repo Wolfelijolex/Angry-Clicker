@@ -6,11 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "styles/components/Gamble.module.scss";
 import GambleWinState from "./GambleWinState/GambleWinState";
 
-type GambleButton = {
-  title: string;
-  text: string;
-};
-
 function GambleButtonComponent() {
   const money = useSelector((state: RootState) => state.money);
   const dispatch = useDispatch();

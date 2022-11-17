@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "styles/components/CreditsPopUp.module.scss";
 
-
 interface InfoMenuProps {
   isOpen: boolean;
   onClose: () => void;
